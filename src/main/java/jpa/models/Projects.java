@@ -84,4 +84,16 @@ public class Projects extends GenerateCommonColumn {
         this.endReelProject = endReelProject;
     }
 
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", theme => "+this.getTheme()+
+                ", description => "+this.getDescription()+
+                ", startProject => "+this.getStartProject()+
+                ", endProject => "+this.getEndProject()+
+                ", startReelProject => "+this.getStartReelProject()+
+                ", equipe => "+this.getEquipe().toString()+
+                ", endReelProject =>"+this.getEndReelProject()+"}";
+    }
+
 }

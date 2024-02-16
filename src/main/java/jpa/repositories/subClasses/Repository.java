@@ -42,10 +42,6 @@ public class Repository<T> {
         EntityTransaction tx = this.manager.getTransaction();
         return tx;
     }
-
-    // public <T> String tableName(T obj){
-    //     return obj.getClass().getName()+"s";
-    // }
     
     /**
      * Get all records from table
@@ -68,7 +64,64 @@ public class Repository<T> {
     }
 
     /**
-     * Find one records by our id
+     * Get all records from table with where clauses
+     * @param champ is String. This parameter represent the name of field for this table. For foreign key we use only the name without "_id"
+     * @see Ex for "equipe_id" we use "equipe" only. It is the name of getter used when you declare your relation
+     * @param Object this parameter is value of champ that you want to make your research. If is foreign key value, we use the objet of model associate
+     * @see Exp For previous example the value will be the objet of equipe
+     * @return List<T>
+     */
+    public List<T> selectWithWhereClause(String champ, Object value){
+        List<T> result = null;
+        System.err.println("********* START ****************");
+        try {
+            System.err.println(this.manager.isOpen());
+            Query query = this.manager.createQuery("select u from "+tableName+" u where "+champ+"= :value", tableName.getClass());
+            query.setParameter("value", value);
+            result = (List<T>) query.getResultList();
+        } catch (Exception e) {
+            System.err.println("=> "+e.getMessage());
+        }
+        System.err.println("********* END ****************");
+
+        return result;
+    }
+
+    /**
+     * This function enable to make create a query with a clause where contained many condition.
+     * @param champ same as "selectWithWhereClause" function. But it's a List of String
+     * @param value same as "selectWithWhereClause" function. But it's a List of Object
+     * @param condition it's list of condition like ['or', 'and', '=', etc.]
+     * @return
+     */
+    public List<T> selectWithMultipleWhereClause(List<String> champ, List<Object> value, List<String> condition){
+        // TODO::Intruction
+        return null;
+    }
+
+    /**
+     * Get all records from table with all data related with him
+     * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
+     * @see Exp For table "project" we use like tableAssociate "equipe". It is the name of getter used when you declare your relation
+     * @return List<T>
+     */
+    public List<T> selectWithJoinFetch(String tableAssociate){
+        List<T> result = null;
+        System.err.println("********* START ****************");
+        try {
+            System.err.println(this.manager.isOpen());
+            Query query = this.manager.createQuery("select u from "+tableName+" u join fetch u."+tableAssociate+" s", tableName.getClass());
+            result = (List<T>) query.getResultList();
+        } catch (Exception e) {
+            System.err.println("=> "+e.getMessage());
+        }
+        System.err.println("********* END ****************");
+
+        return result;
+    }
+
+    /**
+     * Find one records by its id
      * @param id
      * @return T
      */
@@ -100,23 +153,5 @@ public class Repository<T> {
         transactionRepository().commit();
         System.err.println("********* END ****************");
     }
-
-    // /**
-    //  * 
-    //  * @param t
-    //  * @return
-    //  */
-    // public T createForTableWithForeignKey(T t){
-    //     System.err.println("********* START ****************");
-    //     try {
-    //         manager.persist(t);
-    //     } catch (Exception e) {
-    //         System.err.println(e.getMessage());
-    //     }
-    //     closeManager();
-    //     System.err.println("********* END ****************");
-        
-    //     return null;
-    // }
 
 }

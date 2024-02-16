@@ -45,4 +45,10 @@ public class Equipes extends GenerateCommonColumn {
     public void setProjects(List<Projects> projects) {
         this.projects = projects;
     }
+
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", name => "+this.getName()+"}";
+    }
 }

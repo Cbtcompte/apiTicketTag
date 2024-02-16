@@ -46,4 +46,10 @@ public class Tags extends GenerateCommonColumn {
         this.tagTickets = tagTickets;
     }
 
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", libelle => "+this.getLibelle()+
+                ", couleur => "+this.getCouleur()+"}";
+    }
 }

@@ -98,4 +98,14 @@ public class Tickets extends GenerateCommonColumn {
     public void setComments(List<Comments> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", theme => "+this.getLibelle()+
+                ", isClosed => "+this.getIsClosed()+
+                ", isForEveryOne => "+this.getIsForEveryOne()+
+                ", dateStart => "+this.getDateStart()+
+                ", dateEnd => "+this.getDateEnd()+"}";
+    }
 }

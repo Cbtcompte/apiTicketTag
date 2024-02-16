@@ -43,4 +43,12 @@ public class Comments extends GenerateCommonColumn{
     public void setTicket(Tickets tickets) {
         this.ticket = tickets;
     }
+
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", commentaire => "+this.getComment()+
+                ", utilisateur => "+this.getUtilisateur().toString()+
+                ", ticket => "+this.getTicket().toString()+"}";
+    }
 }

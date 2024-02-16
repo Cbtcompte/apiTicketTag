@@ -19,20 +19,21 @@ public class ProjectRepository extends Repository<Projects>{
         EquipeRepository eR = new EquipeRepository();
         test.getManager();
         eR.getManager();
-        Projects projects = test.findById((long) 1);
+        // Projects projects = test.findById((long) 1);
         Equipes e = eR.findById((long) 1);
-        projects.setEquipe(e);
+        // projects.setEquipe(e);
         // Projects projects = new ProjectBuilder()
         //                             .setDescription("")
         //                             .setEndProject(Instant.now())
         //                             .setStartProject(Instant.now())
         //                             .setTheme("Test Project")
         //                             .build();
-        test.create(projects);
-        List<Projects> uS = test.selectAll();
+        // test.create(projects);
+        System.out.println(e.getId());
+        List<Projects> uS = test.selectWithJoinFetch("equipe");
         test.closeManager();
         eR.closeManager();
-        System.out.println("Length : "+ uS.size());
+        System.out.println("Length : "+ uS.get(0).toString());
 		System.out.println(".. done");
 	}
     

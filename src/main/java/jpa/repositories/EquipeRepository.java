@@ -15,13 +15,13 @@ public class EquipeRepository extends Repository<Equipes> {
     public static void main(String[] args) {
 		EquipeRepository test = new EquipeRepository();
         test.getManager();
-        Equipes e = test.findById((long) 1);
-        e.setName("New name");
-        test.create(e);
+        // Equipes e = test.findById((long) 1);
+        // e.setName("New name");
+        //test.create(e);
         //test.create(new EquipeBuilder().setName("Equipe 1").build());
-        List<Equipes> eq = test.selectAll();
+        List<Equipes> eq = test.selectWithJoinFetch("projects");
         test.closeManager();
-        System.out.println(eq.size());
+        System.out.println(eq.get(0).getProjects().size());
 		System.out.println(".. done");
 	}
 }

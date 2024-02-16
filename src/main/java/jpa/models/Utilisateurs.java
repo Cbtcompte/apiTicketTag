@@ -70,4 +70,13 @@ public class Utilisateurs extends GenerateCommonColumn {
     public void setComments(List<Comments> comments) {
         this.comments = comments;
     }
+
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", name => "+this.getName()+
+                ", email => "+this.getEmail()+
+                ", equipe => "+this.getEquipe()+"}";
+
+    }
 }
