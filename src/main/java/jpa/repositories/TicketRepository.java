@@ -2,23 +2,24 @@ package jpa.repositories;
 
 import java.util.List;
 
-import jpa.models.Utilisateurs;
+import jpa.models.Tickets;
 import jpa.repositories.subClasses.Repository;
 
-public class UtilisateurRepository extends Repository< Utilisateurs> {
+public class TicketRepository extends Repository<Tickets>{
 
-    public UtilisateurRepository() {
-        super("Utilisateurs");
+    public TicketRepository() {
+        super("Tickets");
     }
 
     public static void main(String[] args) {
 		
-		UtilisateurRepository test = new UtilisateurRepository();
+		TicketRepository test = new TicketRepository();
         test.getManager();
-        List<Utilisateurs> uS = test.selectAll();
+        List<Tickets> uS = test.selectAll();
         test.closeManager();
         System.out.println("Length : "+ uS.size());
 		System.out.println(".. done");
 	}
-
+    
+    
 }

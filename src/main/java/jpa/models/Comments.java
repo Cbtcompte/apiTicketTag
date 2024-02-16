@@ -11,7 +11,7 @@ import jpa.models.abstracts.GenerateCommonColumn;
 @Table(name = "comments")
 public class Comments extends GenerateCommonColumn{
 
-    private Long utilisateurId;
+    private Utilisateurs utilisateur;
     private String comment;
     private Tickets ticket;
 
@@ -26,17 +26,18 @@ public class Comments extends GenerateCommonColumn{
         return ticket;
     }
 
-    @Column(name = "utilisateur_id", nullable = false)
-    public Long getUtilisateurId() {
-        return utilisateurId;
+    @ManyToOne
+    @JoinColumn(name = "utilisateur_id", nullable = false)
+    public Utilisateurs getUtilisateur() {
+        return utilisateur;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
     }
 
-    public void setUtilisateurId(Long utilisateurId) {
-        this.utilisateurId = utilisateurId;
+    public void setUtilisateur(Utilisateurs utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public void setTicket(Tickets tickets) {

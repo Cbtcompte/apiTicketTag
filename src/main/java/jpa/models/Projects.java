@@ -21,7 +21,7 @@ public class Projects extends GenerateCommonColumn {
     private Equipes equipe;
 
     @ManyToOne
-    @JoinColumn(name = "equipe_id", nullable = false)
+    @JoinColumn(name = "equipe_id", nullable = true)
     public Equipes getEquipe() {
         return this.equipe;
     }

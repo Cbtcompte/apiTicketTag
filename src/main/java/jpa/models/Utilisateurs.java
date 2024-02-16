@@ -20,6 +20,7 @@ public class Utilisateurs extends GenerateCommonColumn {
     private String email;
     private Equipes equipe;
     private List<Assignees> assignees;
+    private List<Comments> comments;
     
     
     @Column(name = "name", nullable = false)
@@ -40,8 +41,14 @@ public class Utilisateurs extends GenerateCommonColumn {
 
 
     @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
-    public List<Assignees> getassignees() {
+    public List<Assignees> getAssignees() {
         return assignees;
+    }
+
+
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
+    public List<Comments> getComments() {
+        return comments;
     }
 
     public void setName(String name) {
@@ -56,8 +63,11 @@ public class Utilisateurs extends GenerateCommonColumn {
         this.equipe = equipe;
     }
 
-    public void setassignees(List<Assignees> assignees) {
+    public void setAssignees(List<Assignees> assignees) {
         this.assignees = assignees;
     }
 
+    public void setComments(List<Comments> comments) {
+        this.comments = comments;
+    }
 }

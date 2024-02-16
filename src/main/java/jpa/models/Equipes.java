@@ -45,21 +45,4 @@ public class Equipes extends GenerateCommonColumn {
     public void setProjects(List<Projects> projects) {
         this.projects = projects;
     }
-
-    public static class EquipeBuilder {
-        private String name;
-
-        public EquipeBuilder setName(String name) {
-            this.name = name;
-
-            return this;
-        }
-
-        public Equipes build(){
-            Equipes equipes = new Equipes();
-            equipes.setName(this.name);
-            return equipes;
-        }
-    }
-
 }
