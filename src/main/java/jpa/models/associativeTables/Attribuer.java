@@ -9,23 +9,39 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import jpa.models.Collaborateur;
 import jpa.models.Ticket;
-import jpa.models.Tag;
-import jpa.models.associativesKey.TagTicketKey;
+import jpa.models.associativesKey.TicketCollaborateurKey;
 
 @Entity
-@Table(name = "tag_tickets")
-public class TagTickets {
-    
-    private TagTicketKey id;
-    private Tag tag;
+@Table(name = "assignees")
+public class Attribuer {
+    private TicketCollaborateurKey id;
+    private Collaborateur collaborateur;
     private Ticket ticket;
+    private String message;
     private Instant created_at;
     private Instant updated_at;
 
     @EmbeddedId
-    public TagTicketKey getId() {
+    public TicketCollaborateurKey getId() {
         return id;
+    }
+
+    @Column(name = "message", nullable = false)
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+    
+    @ManyToOne
+    @MapsId("collaborateurId")
+    @JoinColumn(name = "collaborateur_id")
+    public Collaborateur getCollaborateur() {
+        return collaborateur;
     }
 
     @ManyToOne
@@ -33,13 +49,6 @@ public class TagTickets {
     @JoinColumn(name = "ticket_id")
     public Ticket getTicket() {
         return ticket;
-    }
-    
-    @ManyToOne
-    @MapsId("tagId")
-    @JoinColumn(name = "tag_id")
-    public Tag getTag() {
-        return tag;
     }
 
     @Column(name = "updated_at", nullable = true)
@@ -53,11 +62,11 @@ public class TagTickets {
     }
 
 
-    public void setTag(Tag tag) {
-        this.tag = tag;
+    public void setCollaborateur(Collaborateur collaborateur) {
+        this.collaborateur = collaborateur;
     }
 
-    public void setId(TagTicketKey id) {
+    public void setId(TicketCollaborateurKey id) {
         this.id = id;
     }
 
@@ -72,5 +81,4 @@ public class TagTickets {
     public void setUpdated_at(Instant updated_at) {
         this.updated_at = updated_at;
     }
-
 }

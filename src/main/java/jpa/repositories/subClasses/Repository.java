@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jpa.EntityManagerHelper;
-import jpa.models.Equipes;
+import jpa.models.Collaborateur;
 
 public class Repository<T> {
 
