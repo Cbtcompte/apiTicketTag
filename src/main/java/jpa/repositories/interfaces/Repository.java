@@ -50,7 +50,7 @@ public class Repository<T> {
         try {
             // Query query = this.manager.createQuery("select t from "+ tableName +" t");
             Query query = this.manager.createQuery("select u from "+tableName+" u");
-            System.out.println(query.getResultList().getFirst());
+            //System.out.println(query.getResultList().getFirst());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
