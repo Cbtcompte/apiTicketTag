@@ -14,14 +14,5 @@ public class ProjetRepository extends Repository<Projet>{
         super("Projet");
     }
 
-    // public static void main(String[] args) {
-		
-	// 	ProjetRepository test = new ProjetRepository();
-    //     test.getManager();
-    //     List<Projet> uS = test.selectAll();
-    //     test.closeManager();
-    //     System.out.println("Length : "+ uS.size());
-	// 	System.out.println(".. done");
-	// }
     
 }

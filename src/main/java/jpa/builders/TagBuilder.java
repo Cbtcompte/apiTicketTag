@@ -1,5 +1,6 @@
 package jpa.builders;
 
+import jpa.dtos.TagDto;
 import jpa.models.Tag;
 
 public class TagBuilder{
@@ -14,7 +15,6 @@ public class TagBuilder{
 
     public TagBuilder setCouleur(String couleur) {
         this.couleur = couleur;
-
         return this;
     }
 
@@ -24,6 +24,14 @@ public class TagBuilder{
         tags.setLibelle(this.libelle);
 
         return tags;
+    }
+
+    public TagDto buildDto(){
+        TagDto tagDto = new TagDto();
+        tagDto.setCouleur(this.couleur);
+        tagDto.setLibelle(this.libelle);
+
+        return tagDto;
     }
 
 }

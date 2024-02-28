@@ -11,14 +11,6 @@ public class TagRepository extends Repository<Tag>{
         super("Tag");
     }
 
-    public static void main(String[] args) {
-		
-		TagRepository test = new TagRepository();
-        test.getManager();
-        List<Tag> uS = test.selectAll();
-        test.closeManager();
-        System.out.println("Length : "+ uS.size());
-		System.out.println(".. done");
-	}
+
     
 }
