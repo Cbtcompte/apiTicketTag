@@ -1,6 +1,6 @@
 package jpa.models;
 
-import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -15,10 +15,10 @@ import jpa.models.abstracts.GenerateCommonColumn;
 public class Projet extends GenerateCommonColumn {
     private String theme;
     private String description;
-    private Instant startProjet;
-    private Instant endProjet;
-    private Instant startReelProjet;
-    private Instant endReelProjet;
+    private Date startProjet;
+    private Date endProjet;
+    private Date startReelProjet;
+    private Date endReelProjet;
     private List<Collaborateur> equipes;
     private List<Liste> listes;
 
@@ -60,38 +60,38 @@ public class Projet extends GenerateCommonColumn {
     }
 
     @Column(name = "startProjet", nullable = false)
-    public Instant getStartProjet() {
+    public Date getStartProjet() {
         return this.startProjet;
     }
 
-    public void setStartProjet(Instant startProjet) {
+    public void setStartProjet(Date startProjet) {
         this.startProjet = startProjet;
     }
 
     @Column(name = "endProjet", nullable = false)
-    public Instant getEndProjet() {
+    public Date getEndProjet() {
         return this.endProjet;
     }
 
-    public void setEndProjet(Instant endProjet) {
+    public void setEndProjet(Date endProjet) {
         this.endProjet = endProjet;
     }
 
     @Column(name = "startReelProjet", nullable = true)
-    public Instant getStartReelProjet() {
+    public Date getStartReelProjet() {
         return this.startReelProjet;
     }
 
-    public void setStartReelProjet(Instant startReelProjet) {
+    public void setStartReelProjet(Date startReelProjet) {
         this.startReelProjet = startReelProjet;
     }
 
     @Column(name = "endReelProjet", nullable =  true)
-    public Instant getEndReelProjet() {
+    public Date getEndReelProjet() {
         return this.endReelProjet;
     }
 
-    public void setEndReelProjet(Instant endReelProjet) {
+    public void setEndReelProjet(Date endReelProjet) {
         this.endReelProjet = endReelProjet;
     }
 

@@ -1,5 +1,6 @@
 package jpa.repositories.subClasses;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
@@ -49,7 +50,7 @@ public class Repository<T> {
      * @return List<T>
      */
     public List<T> selectAll(){
-        List<T> result = null;
+        List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
             System.err.println(this.manager.isOpen());
@@ -72,7 +73,7 @@ public class Repository<T> {
      * @return List<T>
      */
     public List<T> selectWithWhereClause(String champ, Object value){
-        List<T> result = null;
+        List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
             System.err.println(this.manager.isOpen());
@@ -106,7 +107,7 @@ public class Repository<T> {
      * @return List<T>
      */
     public List<T> selectWithJoinFetch(String tableAssociate){
-        List<T> result = null;
+        List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
             System.err.println(this.manager.isOpen());
