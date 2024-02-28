@@ -4,10 +4,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class TagsTicketKey {
+public class TagTicketKey {
     
-    private Long ticketId;
     private Long tagId;
+    private Long ticketId;
 
     @Column(name = "ticket_id", nullable = false)
     public Long getTicketId() {

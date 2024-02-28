@@ -9,35 +9,45 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
-import jpa.models.Tickets;
-import jpa.models.Utilisateurs;
-import jpa.models.associativesKey.TicketUtilisateurKey;
+import jpa.models.Collaborateur;
+import jpa.models.Ticket;
+import jpa.models.associativesKey.TicketCollaborateurKey;
 
 @Entity
 @Table(name = "assignees")
-public class Assignees {
-    private TicketUtilisateurKey id;
-    private Utilisateurs utilisateur;
-    private Tickets ticket;
+public class Attribuer {
+    private TicketCollaborateurKey id;
+    private Collaborateur collaborateur;
+    private Ticket ticket;
+    private String message;
     private Instant created_at;
     private Instant updated_at;
 
     @EmbeddedId
-    public TicketUtilisateurKey getId() {
+    public TicketCollaborateurKey getId() {
         return id;
+    }
+
+    @Column(name = "message", nullable = false)
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
     
     @ManyToOne
-    @MapsId("utilisateurId")
-    @JoinColumn(name = "utilisateur_id")
-    public Utilisateurs getUtilisateur() {
-        return utilisateur;
+    @MapsId("collaborateurId")
+    @JoinColumn(name = "collaborateur_id")
+    public Collaborateur getCollaborateur() {
+        return collaborateur;
     }
 
     @ManyToOne
     @MapsId("ticketId")
     @JoinColumn(name = "ticket_id")
-    public Tickets getTicket() {
+    public Ticket getTicket() {
         return ticket;
     }
 
@@ -52,15 +62,15 @@ public class Assignees {
     }
 
 
-    public void setUtilisateur(Utilisateurs utilisateur) {
-        this.utilisateur = utilisateur;
+    public void setCollaborateur(Collaborateur collaborateur) {
+        this.collaborateur = collaborateur;
     }
 
-    public void setId(TicketUtilisateurKey id) {
+    public void setId(TicketCollaborateurKey id) {
         this.id = id;
     }
 
-    public void setTicket(Tickets ticket) {
+    public void setTicket(Ticket ticket) {
         this.ticket = ticket;
     }
 

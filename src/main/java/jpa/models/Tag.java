@@ -2,7 +2,6 @@ package jpa.models;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -12,7 +11,7 @@ import jpa.models.associativeTables.TagTickets;
 
 @Entity
 @Table(name = "tags")
-public class Tags extends GenerateCommonColumn {
+public class Tag extends GenerateCommonColumn {
 
     private String libelle;
     private String couleur;
@@ -23,7 +22,7 @@ public class Tags extends GenerateCommonColumn {
         return this.libelle;
     }
 
-    @OneToMany(mappedBy = "tag", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "tag")
     public List<TagTickets> getTagTickets() {
         return this.tagTickets;
     }
@@ -46,4 +45,10 @@ public class Tags extends GenerateCommonColumn {
         this.tagTickets = tagTickets;
     }
 
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", libelle => "+this.getLibelle()+
+                ", couleur => "+this.getCouleur()+"}";
+    }
 }

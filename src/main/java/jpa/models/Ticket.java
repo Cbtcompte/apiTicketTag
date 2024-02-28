@@ -3,28 +3,28 @@ package jpa.models;
 import java.time.Instant;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jpa.models.abstracts.GenerateCommonColumn;
-import jpa.models.associativeTables.Assignees;
+import jpa.models.associativeTables.Attribuer;
 import jpa.models.associativeTables.TagTickets;
 
 @Entity
 @Table(name = "tickets")
-public class Tickets extends GenerateCommonColumn {
+public class Ticket extends GenerateCommonColumn {
 
     private String libelle;
     private Boolean isClosed = false;
     private Boolean isForEveryOne = false;
     private Instant dateStart;
     private Instant dateEnd;
+    private Liste liste;
     private List<TagTickets> tagTickets;
-    private List<Assignees> assignees;
-    private List<Comments> comments;
-
+    private List<Attribuer> assignees;
 
     @Column(name = "libelle", nullable = false)
     public String getLibelle() {
@@ -56,14 +56,19 @@ public class Tickets extends GenerateCommonColumn {
         return this.tagTickets;
     }
 
-    @OneToMany(mappedBy = "ticket", cascade = CascadeType.PERSIST)
-    public List<Comments> getComments() {
-        return comments;
+    @OneToMany(mappedBy = "ticket")
+    public List<Attribuer> getAssignees() {
+        return assignees;
     }
 
-    @OneToMany(mappedBy = "ticket")
-    public List<Assignees> getassignees() {
-        return assignees;
+    @ManyToOne
+    @JoinColumn(name = "liste_id", nullable = false)
+    public Liste getListe() {
+        return this.liste;
+    }
+
+    public void setListe(Liste liste) {
+        this.liste = liste;
     }
 
     public void setLibelle(String libelle) {
@@ -91,11 +96,17 @@ public class Tickets extends GenerateCommonColumn {
         this.tagTickets = tagTickets;
     }
 
-    public void setassignees(List<Assignees> assignees) {
+    public void setAssignees(List<Attribuer> assignees) {
         this.assignees = assignees;
     }
 
-    public void setComments(List<Comments> comments) {
-        this.comments = comments;
+    @Override
+    public String toString() {
+        return "{id => "+this.getId()+
+                ", theme => "+this.getLibelle()+
+                ", isClosed => "+this.getIsClosed()+
+                ", isForEveryOne => "+this.getIsForEveryOne()+
+                ", dateStart => "+this.getDateStart()+
+                ", dateEnd => "+this.getDateEnd()+"}";
     }
 }

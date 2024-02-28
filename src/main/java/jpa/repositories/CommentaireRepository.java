@@ -2,23 +2,21 @@ package jpa.repositories;
 
 import java.util.List;
 
-import jpa.models.Utilisateur;
+import jpa.asupprimer.Commentaire;
 import jpa.repositories.subClasses.Repository;
 
-public class UtilisateurRepository extends Repository< Utilisateur> {
-
-    public UtilisateurRepository() {
-        super("Utilisateur");
+public class CommentaireRepository extends Repository<Commentaire>{
+    public CommentaireRepository() {
+        super("Commentaire");
     }
 
     public static void main(String[] args) {
 		
-		UtilisateurRepository test = new UtilisateurRepository();
+		CommentaireRepository test = new CommentaireRepository();
         test.getManager();
-        List<Utilisateur> uS = test.selectAll();
+        List<Commentaire> uS = test.selectAll();
         test.closeManager();
         System.out.println("Length : "+ uS.size());
 		System.out.println(".. done");
 	}
-
 }

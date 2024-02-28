@@ -2,23 +2,23 @@ package jpa.repositories;
 
 import java.util.List;
 
-import jpa.models.Utilisateur;
+import jpa.models.Tag;
 import jpa.repositories.subClasses.Repository;
 
-public class UtilisateurRepository extends Repository< Utilisateur> {
+public class TagRepository extends Repository<Tag>{
 
-    public UtilisateurRepository() {
-        super("Utilisateur");
+    public TagRepository() {
+        super("Tag");
     }
 
     public static void main(String[] args) {
 		
-		UtilisateurRepository test = new UtilisateurRepository();
+		TagRepository test = new TagRepository();
         test.getManager();
-        List<Utilisateur> uS = test.selectAll();
+        List<Tag> uS = test.selectAll();
         test.closeManager();
         System.out.println("Length : "+ uS.size());
 		System.out.println(".. done");
 	}
-
+    
 }

@@ -4,7 +4,8 @@ package jpa;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
-import jpa.models.Equipes;
+import jpa.builders.CollaborateurBuilder;
+import jpa.models.Collaborateur;
 
 public class JpaTest {
 
@@ -25,7 +26,7 @@ public class JpaTest {
 		EntityTransaction tx = manager.getTransaction();
 		tx.begin();
 		try {
-			Equipes equipe = new Equipes.EquipeBuilder().setName("Pythagore").build();
+			Collaborateur equipe = new CollaborateurBuilder().setName("Pythagore").build();
 			manager.persist(equipe);
 
 			Query query = manager.createQuery("select e from Equipes e");
