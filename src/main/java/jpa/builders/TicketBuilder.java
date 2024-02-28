@@ -1,6 +1,7 @@
 package jpa.builders;
 
-import java.time.Instant;
+import java.util.Date;
+
 import jpa.models.Ticket;
 
 
@@ -9,8 +10,8 @@ public class TicketBuilder{
     private String libelle;
     private Boolean isClosed = false;
     private Boolean isForEveryOne = false;
-    private Instant dateStart;
-    private Instant dateEnd;
+    private Date dateStart;
+    private Date dateEnd;
 
     public TicketBuilder setLibelle(String libelle) {
         this.libelle = libelle;
@@ -28,12 +29,12 @@ public class TicketBuilder{
         return this;
     }
 
-    public TicketBuilder setDateStart(Instant dateStart) {
+    public TicketBuilder setDateStart(Date dateStart) {
         this.dateStart = dateStart;
         return this;
     }
 
-    public TicketBuilder setDateEnd(Instant dateEnd) {
+    public TicketBuilder setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
         return this;
     }

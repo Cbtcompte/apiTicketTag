@@ -11,15 +11,7 @@ public class TicketRepository extends Repository<Ticket>{
         super("Ticket");
     }
 
-    public static void main(String[] args) {
-		
-		TicketRepository test = new TicketRepository();
-        test.getManager();
-        List<Ticket> uS = test.selectAll();
-        test.closeManager();
-        System.out.println("Length : "+ uS.size());
-		System.out.println(".. done");
-	}
+
     
     
 }

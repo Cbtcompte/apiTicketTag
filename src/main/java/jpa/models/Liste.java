@@ -15,8 +15,9 @@ import jpa.models.abstracts.GenerateCommonColumn;
 @Table(name = "listes")
 public class Liste extends GenerateCommonColumn {
     private String titre;
-    private List<Ticket> tickets; 
     private Projet projet;
+    private List<Ticket> tickets; 
+
 
     @ManyToOne
     @JoinColumn(name = "projet_id", nullable = true)

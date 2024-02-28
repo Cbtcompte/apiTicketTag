@@ -1,7 +1,7 @@
 package jpa.models;
 
-import java.time.Instant;
 import java.util.List;
+import java.util.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,8 +20,8 @@ public class Ticket extends GenerateCommonColumn {
     private String libelle;
     private Boolean isClosed = false;
     private Boolean isForEveryOne = false;
-    private Instant dateStart;
-    private Instant dateEnd;
+    private Date dateStart;
+    private Date dateEnd;
     private Liste liste;
     private List<TagTickets> tagTickets;
     private List<Attribuer> assignees;
@@ -42,12 +42,12 @@ public class Ticket extends GenerateCommonColumn {
     }
 
     @Column(name = "dateStart", nullable = false)
-    public Instant getDateStart() {
+    public Date getDateStart() {
         return this.dateStart;
     }
 
     @Column(name = "dateEnd", nullable = false)
-    public Instant getDateEnd() {
+    public Date getDateEnd() {
         return this.dateEnd;
     }
 
@@ -84,11 +84,11 @@ public class Ticket extends GenerateCommonColumn {
         this.isForEveryOne = isForEveryOne;
     }
 
-    public void setDateStart(Instant dateStart) {
+    public void setDateStart(Date dateStart) {
         this.dateStart = dateStart;
     }
 
-    public void setDateEnd(Instant dateEnd) {
+    public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
     }
 

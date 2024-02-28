@@ -1,5 +1,6 @@
 package jpa.builders;
 
+import jpa.dtos.CollaborateurDto;
 import jpa.models.Collaborateur;
 import jpa.models.Projet;
 import jpa.models.Utilisateur;
@@ -28,10 +29,18 @@ public class CollaborateurBuilder {
     }
 
     public Collaborateur build(){
-        Collaborateur equipes = new Collaborateur();
-        equipes.setName(this.name);
-        equipes.setProjet(this.projet);
-        equipes.setUtilisateur(this.utilisateur);
-        return equipes;
+        Collaborateur collaborateur = new Collaborateur();
+        collaborateur.setName(this.name);
+        collaborateur.setProjet(this.projet);
+        collaborateur.setUtilisateur(this.utilisateur);
+        return collaborateur;
+    }
+    
+    public CollaborateurDto builDto(){
+        CollaborateurDto collaborateurDto = new CollaborateurDto();
+        collaborateurDto.setName(this.name);
+        collaborateurDto.setProjet(this.projet);
+        collaborateurDto.setUtilisateur(this.utilisateur);
+        return collaborateurDto;
     }
 }

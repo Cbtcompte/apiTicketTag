@@ -1,6 +1,4 @@
 package jpa.builders;
-
-import jpa.asupprimer.Commentaire;
 import jpa.models.Collaborateur;
 import jpa.models.Ticket;
 import jpa.models.associativeTables.Attribuer;
@@ -38,4 +36,5 @@ public class AttribuerBuilder {
 
         return attribuer;
     }
+
 }
