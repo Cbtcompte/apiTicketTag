@@ -52,6 +52,8 @@ public class ProjetController extends HttpServlet {
             pin.flush();
         } catch (ParseException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

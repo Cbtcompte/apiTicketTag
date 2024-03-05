@@ -1,7 +1,5 @@
 package jpa.repositories;
 
-import java.util.List;
-
 import jpa.models.Utilisateur;
 import jpa.repositories.subClasses.Repository;
 

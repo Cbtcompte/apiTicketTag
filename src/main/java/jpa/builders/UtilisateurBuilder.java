@@ -1,6 +1,5 @@
 package jpa.builders;
 
-import jpa.dtos.TagDto;
 import jpa.dtos.UtilisateurDto;
 import jpa.models.Utilisateur;
 

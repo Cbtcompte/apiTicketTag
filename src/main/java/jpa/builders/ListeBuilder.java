@@ -1,7 +1,6 @@
 package jpa.builders;
 
 import jpa.dtos.ListeDto;
-import jpa.dtos.ListeDto;
 import jpa.models.Liste;
 import jpa.models.Projet;
 

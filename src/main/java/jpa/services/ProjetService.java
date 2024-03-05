@@ -55,8 +55,9 @@ public class ProjetService {
      * This method is used to add new projet data in database
      * @param pD is ProjetDto
      * @return ProjetDto
+     * @throws Exception 
      */
-    public ProjetDto addProjet(ProjetDto pD){
+    public ProjetDto addProjet(ProjetDto pD) throws Exception{
         Projet p = pD.toEntity();
         projetRepository.getManager();
         projetRepository.create(p);

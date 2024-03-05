@@ -1,47 +1,10 @@
-<<<<<<< HEAD
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\UtilisateurBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\dtos\TagDto.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\EntityManagerHelper.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\associativesKey\TicketCollaborateurKey.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\TicketRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\dtos\UtilisateurDto.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\associativesKey\TagTicketKey.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\EquipeRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\associativeTables\Attribuer.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Ticket.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\ProjetRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\associativesKey\ProjetUserKey.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\abstracts\GenerateCommonColumn.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\TagBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\ListeRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\CollaborateurBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\TagRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\AttribuerBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Projet.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Tag.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\ProjetBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\asupprimer\CommentaireDto.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Utilisateur.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\asupprimer\Specifications\ListeDefault.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\JpaTest.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\dtos\TicketDto.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\services\TicketsControllers.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\asupprimer\Groupe.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\builders\TicketBuilder.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\associativeTables\TagTickets.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Collaborateur.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\UtilisateurRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\CommentaireRepository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\dtos\ProjetDto.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\models\Liste.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\asupprimer\Commentaire.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\interfaces\Repository.java
-C:\Users\Joëlla_T\Desktop\COURS\SIR\Nouveau dossier\tp_sir_thoo_denahou\src\main\java\jpa\repositories\subClasses\Repository.java
-=======
+C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\CollaborateurDto.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\CollaborateurBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\JpaTest.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\services\ProjetService.java
+C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\CollaborateurRepository.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\subClasses\Repository.java
+C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\ListeBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\associativesKey\TagTicketKey.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Liste.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Utilisateur.java
@@ -51,31 +14,25 @@ C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\ma
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\UtilisateurBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\EntityManagerHelper.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\ProjetRepository.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\asupprimer\CommentaireDto.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\controllers\TicketController.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\associativesKey\TicketCollaborateurKey.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\UtilisateurDto.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\TicketRepository.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\CommentaireRepository.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\ListeRepository.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\utils\Formatter.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\TagDto.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\UtilisateurRepository.java
+C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\ListeDto.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Ticket.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\TagRepository.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\TicketDto.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\asupprimer\Specifications\ListeDefault.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\ProjetBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\associativeTables\Attribuer.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Collaborateur.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\repositories\EquipeRepository.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\TicketBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\abstracts\GenerateCommonColumn.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\builders\TagBuilder.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Tag.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\asupprimer\Commentaire.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\Projet.java
-C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\asupprimer\Groupe.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\models\associativesKey\ProjetUserKey.java
 C:\Users\Michael\Desktop\Michael\Mes cours M1\Semestre 2\SIR\TP\tpjpa2023\src\main\java\jpa\dtos\ProjetDto.java
->>>>>>> 27bf6693a9af9ae7f775e468d6341737cf2c7104

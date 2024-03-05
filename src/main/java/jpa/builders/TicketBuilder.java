@@ -2,6 +2,7 @@ package jpa.builders;
 
 import java.util.Date;
 
+import jpa.dtos.TicketDto;
 import jpa.models.Ticket;
 
 
@@ -46,6 +47,19 @@ public class TicketBuilder{
         tickets.setIsClosed(this.isClosed);
         tickets.setIsForEveryOne(this.isForEveryOne);
         tickets.setLibelle(this.libelle);
-        return null;
+
+        return tickets;
+    }
+
+
+    public TicketDto buildDto(){
+        TicketDto ticketDto = new TicketDto();
+        ticketDto.setDateEnd(this.dateEnd);
+        ticketDto.setDateStart(this.dateStart);
+        ticketDto.setIsClosed(this.isClosed);
+        ticketDto.setIsForEveryOne(this.isForEveryOne);
+        ticketDto.setLibelle(this.libelle);
+
+        return ticketDto;
     }
 }

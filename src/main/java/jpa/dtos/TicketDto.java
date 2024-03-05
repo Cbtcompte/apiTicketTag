@@ -20,11 +20,11 @@ public class TicketDto {
         this.libelle = libelle;
     }
 
-    public void setClosed(Boolean closed) {
+    public void setIsClosed(Boolean closed) {
         isClosed = closed;
     }
 
-    public void setForEveryOne(Boolean forEveryOne) {
+    public void setIsForEveryOne(Boolean forEveryOne) {
         isForEveryOne = forEveryOne;
     }
 
@@ -52,6 +52,7 @@ public class TicketDto {
                 .buildDto();
         return t;
     }
+    
     public Ticket toEntity(){
         Ticket t = new TicketBuilder()
                 .setLibelle(this.libelle)

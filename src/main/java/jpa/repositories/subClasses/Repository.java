@@ -7,7 +7,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jpa.EntityManagerHelper;
-import jpa.models.Collaborateur;
 
 public class Repository<T> {
 
@@ -133,7 +132,7 @@ public class Repository<T> {
             query.setParameter("idElement", id);
             result = (T) query.getSingleResult();
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+            System.err.println("=> "+e.getMessage());
         }
         return result;
     }
@@ -141,15 +140,16 @@ public class Repository<T> {
     /**
      * Permet de créer un objet de type T dans la base de donnée
      * @param t
+     * @throws Exception 
      */
-    public void create(T t){
+    public void create(T t) throws Exception {
         transactionRepository().begin();
         System.err.println("********* START ****************");
         try {
             manager.persist(t);
             System.out.println("Insertion fait....");
         } catch (Exception e) {
-            System.err.println(e.getMessage());
+           throw new Exception(e.getMessage());
         }
         transactionRepository().commit();
         System.err.println("********* END ****************");
