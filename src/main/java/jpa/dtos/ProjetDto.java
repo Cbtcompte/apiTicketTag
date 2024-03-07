@@ -1,11 +1,12 @@
 package jpa.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import jpa.builders.ProjetBuilder;
 import jpa.models.Projet;
 
-public class ProjetDto {
+public class ProjetDto implements Serializable {
     private String theme;
     private String description;
     private Date startProjet;
@@ -62,4 +63,8 @@ public class ProjetDto {
                                             
         return p;
     }
+
+   // public Parsy toJson(){
+
+   // }
 }

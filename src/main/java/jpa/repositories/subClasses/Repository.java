@@ -9,7 +9,7 @@ import jakarta.persistence.Query;
 import jpa.EntityManagerHelper;
 import jpa.models.Collaborateur;
 
-public class Repository<T> {
+public abstract class Repository<T> {
 
     EntityManager manager;
     String tableName;
@@ -153,6 +153,15 @@ public class Repository<T> {
         }
         transactionRepository().commit();
         System.err.println("********* END ****************");
+    }
+
+    public void delete (Long id){
+        try {
+            Query query = this.manager.createQuery("delete from "+tableName+" u where u.id = :idElement");
+            query.setParameter("idElement", id);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }

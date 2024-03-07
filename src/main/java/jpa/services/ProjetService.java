@@ -68,5 +68,11 @@ public class ProjetService {
 
         return projetDto;
     }
+
+    public void deleteProjet(Long id){
+        projetRepository.getManager();
+        projetRepository.delete(id);
+
+    }
     
 }

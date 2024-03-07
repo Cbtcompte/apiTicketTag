@@ -7,7 +7,7 @@
 >
     <servlet>
         <servlet-name>ProjetController</servlet-name>
-        <servlet-class>main.java.jpa.controllers.ProjetController</servlet-class>
+        <servlet-class>main.java.jpa.resources.ProjetResource</servlet-class>
     </servlet>
 
     <servlet-mapping>
