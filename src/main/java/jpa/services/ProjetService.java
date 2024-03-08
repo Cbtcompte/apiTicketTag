@@ -61,7 +61,6 @@ public class ProjetService {
         projetRepository.getManager();
         projetRepository.create(p);
         p = projetRepository.findById(p.getId());
-        // projetRepository.closeManager();
         if(p != null){
             return projetDto.fromEntity(p);
         }
