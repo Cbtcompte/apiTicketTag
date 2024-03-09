@@ -6,6 +6,8 @@ import jpa.builders.ProjetBuilder;
 import jpa.models.Projet;
 
 public class ProjetDto {
+    
+    private Long id;
     private String theme;
     private String description;
     private Date startProjet;
@@ -13,8 +15,45 @@ public class ProjetDto {
     private Date startReelProjet;
     private Date endReelProjet;
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getTheme() {
+        return this.theme;
+    }
+
+
+    public String getDescription() {
+        return this.description;
+    }
+
+
+    public Date getStartProjet() {
+        return this.startProjet;
+    }
+
+
+    public Date getEndProjet() {
+        return this.endProjet;
+    }
+
+
+    public Date getStartReelProjet() {
+        return this.startReelProjet;
+    }
+
+
+    public Date getEndReelProjet() {
+        return this.endReelProjet;
+    }
+
     public void setTheme(String theme) {
         this.theme = theme;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setDescription(String description) {
@@ -40,6 +79,7 @@ public class ProjetDto {
     
     public ProjetDto fromEntity(Projet projet){
         ProjetDto p = new ProjetBuilder()
+                    .setId(projet.getId())
                     .setDescription(projet.getDescription())
                     .setEndProjet(projet.getEndProjet())
                     .setEndReelProjet(projet.getEndReelProjet())

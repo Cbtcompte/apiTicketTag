@@ -6,9 +6,13 @@ import jpa.models.Projet;
 
 public class ListeDto {
 
+    private Long id;
     private String titre;
-
     private Projet projet;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public void setProjet(Projet projet) {
         this.projet = projet;
@@ -18,9 +22,22 @@ public class ListeDto {
         this.titre = titre;
     }
 
+    public String getTitre() {
+        return this.titre;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Projet getProjet() {
+        return this.projet;
+    }
+
 
     public ListeDto fromEntity(Liste liste){
         ListeDto l = new ListeBuilder()
+                .setId(liste.getId())
                 .setTitre(liste.getTitre())
                 .setProjet(liste.getProjet())
                 .buildDto();

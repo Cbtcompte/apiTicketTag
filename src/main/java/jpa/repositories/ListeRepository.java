@@ -1,7 +1,7 @@
 package jpa.repositories;
 
 import jpa.models.Liste;
-import jpa.repositories.subClasses.Repository;
+import jpa.repositories.abstracts.Repository;
 
 public class ListeRepository extends Repository<Liste> {
 

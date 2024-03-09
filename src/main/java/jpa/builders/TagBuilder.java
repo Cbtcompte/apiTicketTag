@@ -5,8 +5,14 @@ import jpa.models.Tag;
 
 public class TagBuilder{
 
+    private Long id;
     private String libelle;
     private String couleur;
+
+    public TagBuilder setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public TagBuilder setLibelle(String libelle) {
         this.libelle = libelle;
@@ -28,6 +34,7 @@ public class TagBuilder{
 
     public TagDto buildDto(){
         TagDto tagDto = new TagDto();
+        tagDto.setId(this.id);
         tagDto.setCouleur(this.couleur);
         tagDto.setLibelle(this.libelle);
 

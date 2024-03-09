@@ -8,11 +8,17 @@ import jpa.models.Ticket;
 
 public class TicketBuilder{
 
+    private Long id;
     private String libelle;
     private Boolean isClosed = false;
     private Boolean isForEveryOne = false;
     private Date dateStart;
     private Date dateEnd;
+
+    public TicketBuilder setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public TicketBuilder setLibelle(String libelle) {
         this.libelle = libelle;
@@ -51,9 +57,9 @@ public class TicketBuilder{
         return tickets;
     }
 
-
     public TicketDto buildDto(){
         TicketDto ticketDto = new TicketDto();
+        ticketDto.setId(this.id);
         ticketDto.setDateEnd(this.dateEnd);
         ticketDto.setDateStart(this.dateStart);
         ticketDto.setIsClosed(this.isClosed);

@@ -1,7 +1,7 @@
 package jpa.repositories;
 
 import jpa.models.Tag;
-import jpa.repositories.subClasses.Repository;
+import jpa.repositories.abstracts.Repository;
 
 public class TagRepository extends Repository<Tag>{
 

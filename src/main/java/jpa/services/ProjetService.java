@@ -23,9 +23,7 @@ public class ProjetService {
     * @return List<ProjetDto>
     */
     public List<ProjetDto> getAllProjet(){
-        projetRepository.getManager();
         List<Projet> p = projetRepository.selectAll();
-        projetRepository.closeManager();
         List<ProjetDto> projetDtos = new ArrayList<>();
         if(!p.isEmpty()){
             for (Projet projet : p) {
@@ -41,9 +39,22 @@ public class ProjetService {
     * @return ProjetDto
     */
     public ProjetDto getProjet(Long id){
-        projetRepository.getManager();
         Projet p = projetRepository.findById(id);
-        projetRepository.closeManager();
+        if(p != null){
+            return projetDto.fromEntity(p);
+        }
+
+        return projetDto;
+    }
+
+
+    /**
+    * This method return one project from database. This project is identify by its id
+    *
+    * @return ProjetDto
+    */
+    public ProjetDto getProjetWithListeAndTicket(String champ, String tableAssociate, Object value){
+        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
         if(p != null){
             return projetDto.fromEntity(p);
         }
@@ -59,10 +70,8 @@ public class ProjetService {
      */
     public ProjetDto addProjet(ProjetDto pD) throws Exception{
         Projet p = pD.toEntity();
-        projetRepository.getManager();
         projetRepository.create(p);
         p = projetRepository.findById(p.getId());
-        // projetRepository.closeManager();
         if(p != null){
             return projetDto.fromEntity(p);
         }

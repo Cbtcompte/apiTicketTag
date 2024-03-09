@@ -1,4 +1,4 @@
-package jpa.repositories.subClasses;
+package jpa.repositories.abstracts;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +52,7 @@ public class Repository<T> {
         List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
-            System.err.println(this.manager.isOpen());
+            getManager();
             Query query = this.manager.createQuery("select u from "+tableName+" u");
             result = (List<T>) query.getResultList();
         } catch (Exception e) {
@@ -75,7 +75,7 @@ public class Repository<T> {
         List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
-            System.err.println(this.manager.isOpen());
+            getManager();
             Query query = this.manager.createQuery("select u from "+tableName+" u where "+champ+"= :value", tableName.getClass());
             query.setParameter("value", value);
             result = (List<T>) query.getResultList();
@@ -102,14 +102,14 @@ public class Repository<T> {
     /**
      * Get all records from table with all data related with him
      * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
-     * @see Exp For table "project" we use like tableAssociate "equipe". It is the name of getter used when you declare your relation
+     * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
      * @return List<T>
      */
     public List<T> selectWithJoinFetch(String tableAssociate){
         List<T> result = new ArrayList<>();
         System.err.println("********* START ****************");
         try {
-            System.err.println(this.manager.isOpen());
+            getManager();
             Query query = this.manager.createQuery("select u from "+tableName+" u join fetch u."+tableAssociate+" s", tableName.getClass());
             result = (List<T>) query.getResultList();
         } catch (Exception e) {
@@ -120,14 +120,40 @@ public class Repository<T> {
         return result;
     }
 
+
+    /**
+     * Get all records from table with all data related with him
+     * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
+     * @param champ is String. This parameter represent the name of field for this table. For foreign key we use only the name without "_id"
+     * @param value is value of where clause
+     * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
+     * @return List<T>
+     */
+    public T selectWithJoinFetchAndWhereClause(String champ, String tableAssociate, Object value){
+        T result = null;
+        System.err.println("********* START ****************");
+        try {
+            getManager();
+            Query query = this.manager.createQuery("select u from "+tableName+" u where "+champ+"= :value join fetch u."+tableAssociate+" s", tableName.getClass());
+            query.setParameter("value", value);
+            result = (T) query.getResultList();
+        } catch (Exception e) {
+            System.err.println("=> "+e.getMessage());
+        }
+        System.err.println("********* END ****************");
+
+        return result;
+    }
+
     /**
      * Find one records by its id
-     * @param id
+     * @param id is id of objet
      * @return T
      */
     public T findById(Long id){
         T result = null;
         try {
+            getManager();
             Query query = this.manager.createQuery("select u from "+tableName+" u where id = :idElement");
             query.setParameter("idElement", id);
             result = (T) query.getSingleResult();
@@ -143,6 +169,7 @@ public class Repository<T> {
      * @throws Exception 
      */
     public void create(T t) throws Exception {
+        getManager();
         transactionRepository().begin();
         System.err.println("********* START ****************");
         try {

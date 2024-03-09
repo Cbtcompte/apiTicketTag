@@ -1,5 +1,4 @@
 jpa\JpaTest.class
-jpa\controllers\ProjetController.class
 jpa\repositories\ProjetRepository.class
 jpa\builders\AttribuerBuilder.class
 jpa\models\Utilisateur.class
@@ -33,6 +32,4 @@ jpa\builders\CollaborateurBuilder.class
 jpa\EntityManagerHelper.class
 jpa\repositories\CollaborateurRepository.class
 jpa\models\associativesKey\TagTicketKey.class
-jpa\repositories\subClasses\Repository.class
 jpa\builders\TagBuilder.class
-jpa\controllers\TicketController.class

@@ -1,7 +1,7 @@
 package jpa.repositories;
 
 import jpa.models.Utilisateur;
-import jpa.repositories.subClasses.Repository;
+import jpa.repositories.abstracts.Repository;
 
 public class UtilisateurRepository extends Repository< Utilisateur> {
 

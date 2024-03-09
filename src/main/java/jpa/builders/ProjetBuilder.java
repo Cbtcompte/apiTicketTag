@@ -6,12 +6,18 @@ import jpa.dtos.ProjetDto;
 import jpa.models.Projet;
 
 public class ProjetBuilder {
+    private Long id;
     private String theme;
     private String description;
     private Date startProjet;
     private Date endProjet;
     private Date startReelProjet;
     private Date endReelProjet;
+
+    public ProjetBuilder setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public ProjetBuilder setTheme(String theme) {
         this.theme = theme;
@@ -58,6 +64,7 @@ public class ProjetBuilder {
 
     public ProjetDto buildDto(){
         ProjetDto projetsDto = new ProjetDto();
+        projetsDto.setId(this.id);
         projetsDto.setDescription(this.description);
         projetsDto.setEndProjet(this.endProjet);
         projetsDto.setEndReelProjet(this.endReelProjet);

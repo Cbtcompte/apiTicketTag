@@ -4,11 +4,11 @@ import jpa.builders.TicketBuilder;
 import jpa.models.Liste;
 import jpa.models.Ticket;
 
-import javax.xml.crypto.Data;
-import java.time.Instant;
 import java.util.Date;
 
 public class TicketDto {
+
+    private Long id;
     private String libelle;
     private Boolean isClosed = false;
     private Boolean isForEveryOne = false;
@@ -16,8 +16,55 @@ public class TicketDto {
     private Date dateEnd;
     private Liste liste;
 
+
+    public String getLibelle() {
+        return this.libelle;
+    }
+
+
+    public Boolean isIsClosed() {
+        return this.isClosed;
+    }
+
+    public Boolean getIsClosed() {
+        return this.isClosed;
+    }
+
+
+    public Boolean isIsForEveryOne() {
+        return this.isForEveryOne;
+    }
+
+    public Boolean getIsForEveryOne() {
+        return this.isForEveryOne;
+    }
+
+
+    public Date getDateStart() {
+        return this.dateStart;
+    }
+
+
+    public Date getDateEnd() {
+        return this.dateEnd;
+    }
+
+
+    public Liste getListe() {
+        return this.liste;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+
     public void setLibelle(String libelle) {
         this.libelle = libelle;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setIsClosed(Boolean closed) {
@@ -44,6 +91,7 @@ public class TicketDto {
 
     public TicketDto fromEntity(Ticket ticket){
         TicketDto t = new TicketBuilder()
+                .setId(ticket.getId())
                 .setLibelle(ticket.getLibelle())
                 .setIsClosed(ticket.getIsClosed())
                 .setIsForEveryOne(ticket.getIsForEveryOne())
