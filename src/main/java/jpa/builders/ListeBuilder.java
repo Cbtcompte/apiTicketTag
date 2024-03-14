@@ -48,11 +48,11 @@ public class ListeBuilder {
 
     public ListeDto buildDto(){
         TicketDto td = new TicketDto();
-    
         List<TicketDto> ticketDtos = new ArrayList<>();
-
-        for (Ticket ticket : this.tickets) {
-            ticketDtos.add(td.fromEntity(ticket));
+        if(this.tickets != null){
+            for (Ticket ticket : this.tickets) {
+                ticketDtos.add(td.fromEntity(ticket));
+            }
         }
 
         ListeDto listeDto = new ListeDto();

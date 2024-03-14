@@ -16,7 +16,7 @@ public class ProjetValidation extends Validation<ProjetDto> {
             this.setError(true);
         }
 
-        if(p.getTheme() == null){
+        if(p.getTheme() == null || p.getTheme().isEmpty()){
             this.getMessages().put("theme", "Le thème est obligatoire");
             this.setError(true);
         }

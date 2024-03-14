@@ -44,23 +44,23 @@ public class Resource<S, V, D> {
 
     @POST
     @Consumes("application/json")
-    public ResponseJpa addListe(@Parameter(description = "Pet object that needs to be added to the store", required = true) D l){
-        v.rules(l);
+    public ResponseJpa addListe(@Parameter(description = "Pet object that needs to be added to the store", required = true) D d){
+        v.rules(d);
         if(v.isError()){
             return new ResponseJpa(Response.status(402).build().getStatus(), "Les données ne sont pas correctes", v.getMessages());
         }
         try {
-            s.add(l);
+            d = s.add(d);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new ResponseJpa(Response.status(402).build().getStatus(), "Success", l);
+        return new ResponseJpa(Response.status(200).build().getStatus(), "Success", d);
     }
 
     @DELETE
     @Path("/{id}")
     public ResponseJpa deleteListe (@PathParam("id") Long id){
         s.delete(id);
-        return new ResponseJpa(Response.status(402).build().getStatus(), "Success", v.getMessages());
+        return new ResponseJpa(Response.status(200).build().getStatus(), "Success", v.getMessages());
     }
 }

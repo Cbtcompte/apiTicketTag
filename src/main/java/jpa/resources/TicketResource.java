@@ -1,51 +1,17 @@
 package jpa.resources;
 
-
-import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jpa.dtos.TicketDto;
+import jpa.resources.abstracts.Resource;
 import jpa.services.TicketService;
-
-import java.util.List;
+import jpa.validations.TicketValidation;
 
 @Path("ticket")
 @Produces({"application/json", "application/xml"})
-public class TicketResource {
-
-    private TicketService ticketService;
+public class TicketResource extends Resource<TicketService, TicketValidation, TicketDto>{
 
     public TicketResource() {
-        super();
-        ticketService = new TicketService();
-    }
-
-
-    @GET
-    @Path("/all")
-    public List<TicketDto> getAllticket()  {
-        List<TicketDto> p =  ticketService.getAll();
-        return p;
-    }
-
-    @GET
-    @Path("/{id}")
-    public TicketDto getticket(@PathParam("id") Long id)  {
-        TicketDto p =  ticketService.get(id);
-        return p;
-    }
-
-    @POST
-    @Consumes("application/json")
-    public Response addTicket(@Parameter(description = "Pet object that needs to be added to the store", required = true) TicketDto p){
-        ticketService.add(p);
-        return Response.ok().entity("SUCCESS").build();
-    }
-
-    @DELETE
-    @Path("/{id}")
-    public Response deleteTicket (@PathParam("id") Long id){
-        ticketService.delete(id);
-        return Response.ok().entity("SUCCESS").build();
+        super(TicketService.class, TicketValidation.class);
     }
 }

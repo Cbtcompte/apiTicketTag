@@ -1,52 +1,20 @@
 package jpa.resources;
 
 
-import io.swagger.v3.oas.annotations.Parameter;
-import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.Response;
+import jpa.resources.abstracts.Resource;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jpa.dtos.TagDto;
 import jpa.services.TagService;
+import jpa.validations.TagValidation;
 
-import java.util.List;
 
 @Path("tag")
 @Produces({"application/json", "application/xml"})
-public class TagResource {
-
-    private TagService tagService;
+public class TagResource extends Resource<TagService, TagValidation, TagDto> {
 
     public TagResource() {
-        super();
-        tagService = new TagService();
-    }
-
-
-    @GET
-    @Path("/all")
-    public List<TagDto> getAlltag()  {
-        List<TagDto> p =  tagService.getAll();
-        return p;
-    }
-
-    @GET
-    @Path("/{id}")
-    public TagDto gettag(@PathParam("id") Long id)  {
-        TagDto p =  tagService.get(id);
-        return p;
-    }
-
-    @POST
-    @Consumes("application/json")
-    public Response addTag(@Parameter(description = "Pet object that needs to be added to the store", required = true) TagDto p){
-        tagService.add(p);
-        return Response.ok().entity("SUCCESS").build();
-    }
-
-    @DELETE
-    @Path("/{id}")
-    public Response deleteTag (@PathParam("id") Long id){
-        tagService.delete(id);
-        return Response.ok().entity("SUCCESS").build();
+        super(TagService.class, TagValidation.class);
     }
 }
 

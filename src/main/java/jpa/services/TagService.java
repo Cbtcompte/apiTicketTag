@@ -65,7 +65,6 @@ public class TagService implements Service<TagDto>{
         try {
             tagRepository.create(t);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         t = tagRepository.findById(t.getId());
@@ -81,4 +80,4 @@ public class TagService implements Service<TagDto>{
         tagRepository.delete(id);
 
     }
-    }
+}

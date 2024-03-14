@@ -77,9 +77,10 @@ public class ProjetBuilder {
         ListeDto lD = new ListeDto();
         List<ListeDto> listeDtos = new ArrayList<>();
         ProjetDto projetsDto = new ProjetDto();
-
-        for (Liste liste : this.listes) {
-            listeDtos.add(lD.fromEntity(liste));
+        if(this.listes != null){
+            for (Liste liste : this.listes) {
+                listeDtos.add(lD.fromEntity(liste));
+            }
         }
         projetsDto.setId(this.id);
         projetsDto.setDescription(this.description);
