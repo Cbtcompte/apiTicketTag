@@ -14,7 +14,7 @@ public class TicketDto {
     private Boolean isForEveryOne = false;
     private Date dateStart;
     private Date dateEnd;
-    private Liste liste;
+    private Long liste;
 
 
     public String getLibelle() {
@@ -50,7 +50,7 @@ public class TicketDto {
     }
 
 
-    public Liste getListe() {
+    public Long getListe() {
         return this.liste;
     }
 
@@ -84,7 +84,7 @@ public class TicketDto {
     }
 
 
-    public void setListe(Liste liste) {
+    public void setListe(Long liste) {
         this.liste = liste;
     }
 
@@ -97,17 +97,19 @@ public class TicketDto {
                 .setIsForEveryOne(ticket.getIsForEveryOne())
                 .setDateStart(ticket.getDateStart())
                 .setDateEnd(ticket.getDateEnd())
+                .setListe(ticket.getListe())
                 .buildDto();
         return t;
     }
     
-    public Ticket toEntity(){
+    public Ticket toEntity(Liste l){
         Ticket t = new TicketBuilder()
                 .setLibelle(this.libelle)
                 .setIsClosed(this.isClosed)
                 .setIsForEveryOne(this.isForEveryOne)
                 .setDateStart(this.dateStart)
                 .setDateEnd(this.dateEnd)
+                .setListe(l)
                 .build();
 
         return t;

@@ -41,12 +41,12 @@ public class Ticket extends GenerateCommonColumn {
         return this.isForEveryOne;
     }
 
-    @Column(name = "dateStart", nullable = false)
+    @Column(name = "dateStart", nullable = true)
     public Date getDateStart() {
         return this.dateStart;
     }
 
-    @Column(name = "dateEnd", nullable = false)
+    @Column(name = "dateEnd", nullable = true)
     public Date getDateEnd() {
         return this.dateEnd;
     }

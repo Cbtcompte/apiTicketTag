@@ -3,6 +3,7 @@ package jpa.builders;
 import java.util.Date;
 
 import jpa.dtos.TicketDto;
+import jpa.models.Liste;
 import jpa.models.Ticket;
 
 
@@ -14,6 +15,12 @@ public class TicketBuilder{
     private Boolean isForEveryOne = false;
     private Date dateStart;
     private Date dateEnd;
+    private Liste liste;
+
+    public TicketBuilder setListe(Liste liste) {
+        this.liste = liste;
+        return this;
+    }
 
     public TicketBuilder setId(Long id) {
         this.id = id;
@@ -52,6 +59,7 @@ public class TicketBuilder{
         tickets.setDateStart(this.dateStart);
         tickets.setIsClosed(this.isClosed);
         tickets.setIsForEveryOne(this.isForEveryOne);
+        tickets.setListe(this.liste);
         tickets.setLibelle(this.libelle);
 
         return tickets;
@@ -62,10 +70,12 @@ public class TicketBuilder{
         ticketDto.setId(this.id);
         ticketDto.setDateEnd(this.dateEnd);
         ticketDto.setDateStart(this.dateStart);
+        ticketDto.setListe(this.liste.getId());
         ticketDto.setIsClosed(this.isClosed);
         ticketDto.setIsForEveryOne(this.isForEveryOne);
         ticketDto.setLibelle(this.libelle);
 
         return ticketDto;
     }
+
 }

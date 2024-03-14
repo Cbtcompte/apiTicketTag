@@ -6,8 +6,9 @@ import java.util.List;
 import jpa.dtos.ProjetDto;
 import jpa.models.Projet;
 import jpa.repositories.ProjetRepository;
+import jpa.services.abstracts.Service;
 
-public class ProjetService {
+public class ProjetService implements Service<ProjetDto>{
 
     private ProjetRepository projetRepository;
     private ProjetDto projetDto;
@@ -18,12 +19,13 @@ public class ProjetService {
     }
 
    /**
-    * This method return all project from database
-    *
-    * @return List<ProjetDto>
+     * This method return all project from database
+     *
+     * @return List<ProjetDto>
     */
-    public List<ProjetDto> getAllProjet(){
-        List<Projet> p = projetRepository.selectAll();
+    @Override
+    public List<ProjetDto> getAll(){
+        List<Projet> p = projetRepository.selectWithLeftJoinFetch("listes");
         List<ProjetDto> projetDtos = new ArrayList<>();
         if(!p.isEmpty()){
             for (Projet projet : p) {
@@ -34,27 +36,13 @@ public class ProjetService {
     }
 
     /**
-    * This method return one project from database. This project is identify by its id
-    *
-    * @return ProjetDto
+     * This method return one project from database. This project is identify by its id
+     *
+     * @return ProjetDto
     */
-    public ProjetDto getProjet(Long id){
-        Projet p = projetRepository.findById(id);
-        if(p != null){
-            return projetDto.fromEntity(p);
-        }
-
-        return projetDto;
-    }
-
-
-    /**
-    * This method return one project from database. This project is identify by its id
-    *
-    * @return ProjetDto
-    */
-    public ProjetDto getProjetWithListeAndTicket(String champ, String tableAssociate, Object value){
-        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
+    @Override
+    public ProjetDto get(Long id){
+        Projet p = projetRepository.findByIdWithJoinFetch("listes", id);
         if(p != null){
             return projetDto.fromEntity(p);
         }
@@ -68,10 +56,32 @@ public class ProjetService {
      * @return ProjetDto
      * @throws Exception 
      */
-    public ProjetDto addProjet(ProjetDto pD) throws Exception{
+    @Override
+    public ProjetDto add(ProjetDto pD) throws Exception{
         Projet p = pD.toEntity();
         projetRepository.create(p);
         p = projetRepository.findById(p.getId());
+        if(p != null){
+            return projetDto.fromEntity(p);
+        }
+
+        return projetDto;
+    }
+
+    @Override
+    public void delete(Long id){
+        projetRepository.getManager();
+        projetRepository.delete(id);
+
+    }
+
+    /**
+     * This method return one project from database. This project is identify by its id
+     *
+     * @return ProjetDto
+    */
+    public ProjetDto getProjetWithListeAndTicket(String champ, String tableAssociate, Object value){
+        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
         if(p != null){
             return projetDto.fromEntity(p);
         }

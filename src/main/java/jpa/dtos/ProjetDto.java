@@ -1,11 +1,13 @@
 package jpa.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import jpa.builders.ProjetBuilder;
 import jpa.models.Projet;
 
-public class ProjetDto {
+public class ProjetDto implements Serializable{
     
     private Long id;
     private String theme;
@@ -14,6 +16,16 @@ public class ProjetDto {
     private Date endProjet;
     private Date startReelProjet;
     private Date endReelProjet;
+    private List<ListeDto> listeDtos;
+
+
+    public List<ListeDto> getListeDtos() {
+        return this.listeDtos;
+    }
+
+    public void setListeDtos(List<ListeDto> listeDtos) {
+        this.listeDtos = listeDtos;
+    }
 
     public Long getId() {
         return this.id;
@@ -86,6 +98,7 @@ public class ProjetDto {
                     .setStartProjet(projet.getStartProjet())
                     .setStartReelProjet(projet.getStartReelProjet())
                     .setTheme(projet.getTheme())
+                    .setListes(projet.getListes())
                     .buildDto();
         return p;
     }
@@ -102,4 +115,8 @@ public class ProjetDto {
                                             
         return p;
     }
+
+   // public Parsy toJson(){
+
+   // }
 }

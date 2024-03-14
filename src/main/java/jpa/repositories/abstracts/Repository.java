@@ -8,7 +8,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jpa.EntityManagerHelper;
 
-public class Repository<T> {
+public abstract class Repository<T> {
 
     EntityManager manager;
     String tableName;
@@ -124,6 +124,53 @@ public class Repository<T> {
     /**
      * Get all records from table with all data related with him
      * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
+     * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
+     * @return List<T>
+     */
+    public List<T> selectWithLeftJoinFetch(String tableAssociate){
+        List<T> result = new ArrayList<>();
+        System.err.println("********* START ****************");
+        try {
+            getManager();
+            Query query = this.manager.createQuery("select u from "+tableName+" u left join fetch u."+tableAssociate+" s", tableName.getClass());
+            result = (List<T>) query.getResultList();
+        } catch (Exception e) {
+            System.err.println("=> "+e.getMessage());
+        }
+        System.err.println("********* END ****************");
+
+        return result;
+    }
+
+
+    /**
+     * Get all records from table with all data related with him
+     * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
+     * @param champ is String. This parameter represent the name of field for this table. For foreign key we use only the name without "_id"
+     * @param value is value of where clause
+     * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
+     * @return List<T>
+     */
+    public T findByIdWithJoinFetch(String tableAssociate, Object value){
+        T result = null;
+        System.err.println("********* START ****************");
+        try {
+            getManager();
+            Query query = this.manager.createQuery("select u from "+tableName+" u left join fetch u."+tableAssociate+" s where u.id = :value", tableName.getClass());
+            query.setParameter("value", value);
+            result = (T) query.getSingleResult();
+        } catch (Exception e) {
+            System.err.println("=> "+e.getMessage());
+        }
+        System.err.println("********* END ****************");
+
+        return result;
+    }
+
+
+    /**
+     * Get all records from table with all data related with him
+     * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
      * @param champ is String. This parameter represent the name of field for this table. For foreign key we use only the name without "_id"
      * @param value is value of where clause
      * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
@@ -134,7 +181,7 @@ public class Repository<T> {
         System.err.println("********* START ****************");
         try {
             getManager();
-            Query query = this.manager.createQuery("select u from "+tableName+" u where "+champ+"= :value join fetch u."+tableAssociate+" s", tableName.getClass());
+            Query query = this.manager.createQuery("select u from "+tableName+" u left join fetch u."+tableAssociate+" s where u."+champ+"= :value", tableName.getClass());
             query.setParameter("value", value);
             result = (T) query.getResultList();
         } catch (Exception e) {
@@ -154,7 +201,7 @@ public class Repository<T> {
         T result = null;
         try {
             getManager();
-            Query query = this.manager.createQuery("select u from "+tableName+" u where id = :idElement");
+            Query query = this.manager.createQuery("select u from "+tableName+" u where u.id = :idElement");
             query.setParameter("idElement", id);
             result = (T) query.getSingleResult();
         } catch (Exception e) {
@@ -180,6 +227,15 @@ public class Repository<T> {
         }
         transactionRepository().commit();
         System.err.println("********* END ****************");
+    }
+
+    public void delete (Long id){
+        try {
+            Query query = this.manager.createQuery("delete from "+tableName+" u where u.id = :idElement");
+            query.setParameter("idElement", id);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
 }

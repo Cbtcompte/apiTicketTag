@@ -1,5 +1,7 @@
 package jpa.dtos;
 
+import java.util.List;
+
 import jpa.builders.ListeBuilder;
 import jpa.models.Liste;
 import jpa.models.Projet;
@@ -8,13 +10,23 @@ public class ListeDto {
 
     private Long id;
     private String titre;
-    private Projet projet;
+    private Long projet;
+    private List<TicketDto> ticketDtos;
+
+    public List<TicketDto> getTicketDtos() {
+        return this.ticketDtos;
+    }
+
+    public void setTicketDtos(List<TicketDto> ticketDtos) {
+        this.ticketDtos = ticketDtos;
+    }
+    
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setProjet(Projet projet) {
+    public void setProjet(Long projet) {
         this.projet = projet;
     }
 
@@ -30,7 +42,7 @@ public class ListeDto {
         return this.id;
     }
 
-    public Projet getProjet() {
+    public Long getProjet() {
         return this.projet;
     }
 
@@ -40,14 +52,15 @@ public class ListeDto {
                 .setId(liste.getId())
                 .setTitre(liste.getTitre())
                 .setProjet(liste.getProjet())
+                .setTickets(liste.getTickets())
                 .buildDto();
-
         return l;
     }
-    public Liste toEntity(){
+
+    public Liste toEntity(Projet p){
         Liste l = new ListeBuilder()
                 .setTitre(this.titre)
-                .setProjet(this.projet)
+                .setProjet(p)
                 .build();
         return l;
     }
