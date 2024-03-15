@@ -62,7 +62,6 @@ public class CollaborateurService {
         try {
             collaborateurRepository.create(c);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         c = collaborateurRepository.findById(c.getId());
@@ -76,7 +75,6 @@ public class CollaborateurService {
     public void deleteCollaborateur(Long id){
         collaborateurRepository.getManager();
         collaborateurRepository.delete(id);
-
     }
 
-    }
+}

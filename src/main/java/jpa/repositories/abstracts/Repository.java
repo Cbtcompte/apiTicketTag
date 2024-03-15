@@ -176,6 +176,42 @@ public abstract class Repository<T> {
      * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
      * @return List<T>
      */
+    // public T findByIdWithJoinFetchArray(String[] tableAssociate, Object value){
+    //     T result = null;
+    //     String association = "";
+    //     int i = 1;
+    //     for (String string : tableAssociate) {
+    //         if(tableAssociate.length == i){
+    //             association += "."+string+" a"+i;
+    //         }else{
+    //             association += "."+string+" a"+i+" left join fetch a"+i;
+    //         }
+    //         i++;
+    //     }
+    //     System.out.println(association);
+    //     System.err.println("********* START ****************");
+    //     try {
+    //         getManager();
+    //         Query query = this.manager.createQuery("select u from "+tableName+" u left join fetch u"+association+" where u.id = :value", tableName.getClass());
+    //         query.setParameter("value", value);
+    //         result = (T) query.getSingleResult();
+    //     } catch (Exception e) {
+    //         System.err.println("=> "+e.getMessage());
+    //     }
+    //     System.err.println("********* END ****************");
+
+    //     return result;
+    // }
+
+
+    /**
+     * Get all records from table with all data related with him
+     * @param tableAssociate is the name of relation model with this table. This name must to be lowercase
+     * @param champ is String. This parameter represent the name of field for this table. For foreign key we use only the name without "_id"
+     * @param value is value of where clause
+     * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
+     * @return List<T>
+     */
     public T selectWithJoinFetchAndWhereClause(String champ, String tableAssociate, Object value){
         T result = null;
         System.err.println("********* START ****************");

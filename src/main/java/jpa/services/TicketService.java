@@ -1,5 +1,6 @@
 package jpa.services;
 
+import jpa.dtos.ListeDto;
 import jpa.dtos.TicketDto;
 import jpa.models.Liste;
 import jpa.models.Ticket;
@@ -64,7 +65,6 @@ public class TicketService implements Service<TicketDto>{
         try {
             ticketRepository.create(t);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         t = ticketRepository.findById(t.getId());
@@ -81,4 +81,13 @@ public class TicketService implements Service<TicketDto>{
 
     }
 
+    public TicketDto getWithOthersRelations(String champ, String tableAssociate, Object value){
+        Ticket t = ticketRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
+        if(t != null){
+            return ticketDto.fromEntity(t);
+        }
+
+        return ticketDto;
     }
+
+}

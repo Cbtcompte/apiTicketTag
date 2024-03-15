@@ -10,10 +10,9 @@ import jpa.validations.abstracts.Validation;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-
 public class Resource<S, V, D> {
 
-    private Service<D> s;
+    protected Service<D> s;
     private Validation<D> v;
 
     public Resource( Class<S> typeS, Class<V> typeV) {
@@ -37,14 +36,14 @@ public class Resource<S, V, D> {
 
     @GET
     @Path("/{id}")
-    public ResponseJpa getliste(@PathParam("id") Long id)  {
+    public ResponseJpa get(@PathParam("id") Long id)  {
         D l =  s.get(id);
        return new ResponseJpa(Response.ok().build().getStatus(), "Succes", l);
     }
 
     @POST
     @Consumes("application/json")
-    public ResponseJpa addListe(@Parameter(description = "Pet object that needs to be added to the store", required = true) D d){
+    public ResponseJpa add(@Parameter(description = "Pet object that needs to be added to the store", required = true) D d){
         v.rules(d);
         if(v.isError()){
             return new ResponseJpa(Response.status(402).build().getStatus(), "Les données ne sont pas correctes", v.getMessages());

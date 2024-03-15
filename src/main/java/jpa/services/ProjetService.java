@@ -42,13 +42,29 @@ public class ProjetService implements Service<ProjetDto>{
     */
     @Override
     public ProjetDto get(Long id){
+        // String[] tableAssociation = {"listes", "tickets"};
         Projet p = projetRepository.findByIdWithJoinFetch("listes", id);
+        if(p != null){
+            return projetDto.fromEntity(p);
+        }
+        return projetDto;
+    }
+    
+
+    /**
+     * This method return one project from database. This project is identify by its id
+     *
+     * @return ProjetDto
+    */
+    public ProjetDto getWithOthersRelations(String champ, Object value){
+        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, "listes", value);
         if(p != null){
             return projetDto.fromEntity(p);
         }
 
         return projetDto;
     }
+
 
     /**
      * This method is used to add new projet data in database
@@ -74,19 +90,4 @@ public class ProjetService implements Service<ProjetDto>{
         projetRepository.delete(id);
 
     }
-
-    /**
-     * This method return one project from database. This project is identify by its id
-     *
-     * @return ProjetDto
-    */
-    public ProjetDto getProjetWithListeAndTicket(String champ, String tableAssociate, Object value){
-        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
-        if(p != null){
-            return projetDto.fromEntity(p);
-        }
-
-        return projetDto;
-    }
-    
 }

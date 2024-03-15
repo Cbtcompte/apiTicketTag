@@ -1,7 +1,9 @@
 package jpa.services;
 
 import jpa.dtos.ListeDto;
+import jpa.dtos.ProjetDto;
 import jpa.models.Liste;
+import jpa.models.Projet;
 import jpa.repositories.ListeRepository;
 import jpa.repositories.ProjetRepository;
 import jpa.services.abstracts.Service;
@@ -26,7 +28,7 @@ public class ListeService implements Service<ListeDto>{
     */
     @Override
     public List<ListeDto> getAll(){
-        List<Liste> l = listeRepository.selectAll();
+        List<Liste> l = listeRepository.selectWithLeftJoinFetch("tickets");
         List<ListeDto> listeDtos = new ArrayList<>();
         if(!l.isEmpty()){
             for (Liste liste : l) {
@@ -44,7 +46,7 @@ public class ListeService implements Service<ListeDto>{
     */
     @Override
     public ListeDto get(Long id){
-        Liste p = listeRepository.findById(id);
+        Liste p = listeRepository.findByIdWithJoinFetch("tickets", id);
         if(p != null){
             return listeDto.fromEntity(p);
         }
@@ -76,6 +78,15 @@ public class ListeService implements Service<ListeDto>{
     public void delete(Long id){
         listeRepository.getManager();
         listeRepository.delete(id);
+    }
+
+    public ListeDto getWithOthersRelations(String champ, Object value){
+        Liste l = listeRepository.selectWithJoinFetchAndWhereClause(champ, "tickets", value);
+        if(l != null){
+            return listeDto.fromEntity(l);
+        }
+
+        return listeDto;
     }
 
 }

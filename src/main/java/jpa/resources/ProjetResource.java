@@ -13,7 +13,5 @@ import jpa.validations.ProjetValidation;
 public class ProjetResource extends Resource<ProjetService, ProjetValidation, ProjetDto> {
     public ProjetResource() {
         super(ProjetService.class, ProjetValidation.class);
-      
     }
-
 }

@@ -30,5 +30,4 @@ public class SwaggerResource {
             return null;
         }
     }
-
 }

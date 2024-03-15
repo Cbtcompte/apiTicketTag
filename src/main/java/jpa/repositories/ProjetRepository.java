@@ -7,6 +7,4 @@ public class ProjetRepository extends Repository<Projet>{
     public ProjetRepository() {
         super("Projet");
     }
-
-    
 }

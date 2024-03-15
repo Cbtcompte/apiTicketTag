@@ -24,9 +24,7 @@ public class TagService implements Service<TagDto>{
      */
     @Override
     public List<TagDto> getAll(){
-        tagRepository.getManager();
         List<Tag> t = tagRepository.selectAll();
-        tagRepository.closeManager();
         List<TagDto> tagDtos = new ArrayList<>();
         if(!t.isEmpty()){
             for (Tag tag : t) {
@@ -43,9 +41,7 @@ public class TagService implements Service<TagDto>{
      */
     @Override
     public TagDto get(Long id){
-        tagRepository.getManager();
         Tag t = tagRepository.findById(id);
-        tagRepository.closeManager();
         if(t != null){
             return tagDto.fromEntity(t);
         }
@@ -61,7 +57,6 @@ public class TagService implements Service<TagDto>{
     @Override
     public TagDto add(TagDto tD){
         Tag t = tD.toEntity();
-        tagRepository.getManager();
         try {
             tagRepository.create(t);
         } catch (Exception e) {
@@ -76,8 +71,6 @@ public class TagService implements Service<TagDto>{
 
     @Override
     public void delete(Long id){
-        tagRepository.getManager();
         tagRepository.delete(id);
-
     }
 }
