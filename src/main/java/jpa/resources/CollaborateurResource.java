@@ -8,7 +8,7 @@ import jpa.services.CollaborateurService;
 
 import java.util.List;
 
-@Path("collaborateur")
+@Path("api/collaborateur")
 @Produces({"application/json", "application/xml"})
 public class CollaborateurResource {
 

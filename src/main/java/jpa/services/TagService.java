@@ -3,7 +3,7 @@ package jpa.services;
 import jpa.dtos.TagDto;
 import jpa.models.Tag;
 import jpa.repositories.TagRepository;
-import jpa.services.abstracts.Service;
+import jpa.services.interfaces.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,6 +63,28 @@ public class TagService implements Service<TagDto>{
             e.printStackTrace();
         }
         t = tagRepository.findById(t.getId());
+        if(t != null){
+            return tagDto.fromEntity(t);
+        }
+        return tagDto;
+    }
+
+
+    /**
+     * This method is used to add new tag data in database
+     * @param tD is TagDto
+     * @return TagDto
+     */
+    @Override
+    public TagDto update(TagDto tD, Long id){
+        Tag t = tagRepository.findById(id);
+        t.setCouleur(tD.getCouleur());
+        t.setLibelle(tD.getLibelle());
+        try {
+            tagRepository.update(t);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(t != null){
             return tagDto.fromEntity(t);
         }

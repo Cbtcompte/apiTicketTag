@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import jpa.ResponseJpa;
-import jpa.services.abstracts.Service;
+import jpa.services.interfaces.Service;
 import jpa.validations.abstracts.Validation;
 
 import java.lang.reflect.InvocationTargetException;
@@ -42,6 +42,7 @@ public class Resource<S, V, D> {
     }
 
     @POST
+    @Path("/create")
     @Consumes("application/json")
     public ResponseJpa add(@Parameter(description = "Pet object that needs to be added to the store", required = true) D d){
         v.rules(d);
@@ -57,9 +58,25 @@ public class Resource<S, V, D> {
     }
 
     @DELETE
-    @Path("/{id}")
+    @Path("delete/{id}")
     public ResponseJpa deleteListe (@PathParam("id") Long id){
         s.delete(id);
-        return new ResponseJpa(Response.status(200).build().getStatus(), "Success", v.getMessages());
+        return new ResponseJpa(Response.status(200).build().getStatus(), "Success", s.getAll());
+    }
+
+    @PUT
+    @Path("update/{id}")
+    @Consumes("application/json")
+    public ResponseJpa put(@Parameter(description = "Pet object that needs to be added to the store", required = true) D d, @PathParam("id") Long id){
+        v.rules(d);
+        if(v.isError()){
+            return new ResponseJpa(Response.status(402).build().getStatus(), "Les données ne sont pas correctes", v.getMessages());
+        }
+        try {
+            d = s.update(d, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseJpa(Response.status(200).build().getStatus(), "Success", d);
     }
 }

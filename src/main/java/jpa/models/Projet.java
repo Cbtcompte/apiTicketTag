@@ -8,19 +8,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jpa.models.abstracts.GenerateCommonColumn;
+import jpa.models.associativeTables.EquipeProjet;
 
 @Entity
 @Table(name = "projets")
 public class Projet extends GenerateCommonColumn {
     private String theme;
     private String description;
+    private String status = "En cours";
     private Date startProjet;
     private Date endProjet;
-    private Date startReelProjet;
-    private Date endReelProjet;
-    private List<Collaborateur> equipes;
+    private List<EquipeProjet> equipeProjets;
     private List<Liste> listes;
 
+    public void setEquipeProjets(List<EquipeProjet> equipeProjets) {
+        this.equipeProjets = equipeProjets;
+    }
 
     @OneToMany(mappedBy = "projet")
     public List<Liste> getListes() {
@@ -32,13 +35,19 @@ public class Projet extends GenerateCommonColumn {
     }
 
     @OneToMany(mappedBy = "projet")
-    public  List<Collaborateur> getEquipes() {
-        return this.equipes;
+    public  List<EquipeProjet> getEquipeProjets() {
+        return this.equipeProjets;
+    }
+    
+    @Column(name = "status", nullable = false)
+    public String getStatus() {
+        return this.status;
     }
 
-    public void setEquipes(List<Collaborateur> equipes) {
-        this.equipes = equipes;
-    }    
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
 
     @Column(name = "theme", nullable = false)
     public String getTheme() {
@@ -76,33 +85,13 @@ public class Projet extends GenerateCommonColumn {
         this.endProjet = endProjet;
     }
 
-    @Column(name = "startReelProjet", nullable = true)
-    public Date getStartReelProjet() {
-        return this.startReelProjet;
-    }
-
-    public void setStartReelProjet(Date startReelProjet) {
-        this.startReelProjet = startReelProjet;
-    }
-
-    @Column(name = "endReelProjet", nullable =  true)
-    public Date getEndReelProjet() {
-        return this.endReelProjet;
-    }
-
-    public void setEndReelProjet(Date endReelProjet) {
-        this.endReelProjet = endReelProjet;
-    }
-
     @Override
     public String toString() {
         return "{id => "+this.getId()+
                 ", theme => "+this.getTheme()+
                 ", description => "+this.getDescription()+
                 ", startProjet => "+this.getStartProjet()+
-                ", endProjet => "+this.getEndProjet()+
-                ", startReelProjet => "+this.getStartReelProjet()+
-                ", endReelProjet =>"+this.getEndReelProjet()+"}";
+                ", endProjet => "+this.getEndProjet()+"}";
     }
 
 }

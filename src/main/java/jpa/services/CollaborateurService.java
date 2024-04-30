@@ -1,7 +1,7 @@
 package jpa.services;
 
 import jpa.dtos.CollaborateurDto;
-import jpa.models.Collaborateur;
+import jpa.models.associativeTables.Collaborateur;
 import jpa.repositories.CollaborateurRepository;
 
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class CollaborateurService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        c = collaborateurRepository.findById(c.getId());
+        // c = collaborateurRepository.findById(c.getId());
         if(c != null){
             return collaborateurDto.fromEntity(c);
         }

@@ -1,5 +1,6 @@
 package jpa.dtos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jpa.builders.ListeBuilder;
@@ -11,7 +12,7 @@ public class ListeDto {
     private Long id;
     private String titre;
     private Long projet;
-    private List<TicketDto> ticketDtos;
+    private List<TicketDto> ticketDtos = new ArrayList<>();
 
     public List<TicketDto> getTicketDtos() {
         return this.ticketDtos;

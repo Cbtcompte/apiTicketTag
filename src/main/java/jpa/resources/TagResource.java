@@ -9,7 +9,7 @@ import jpa.services.TagService;
 import jpa.validations.TagValidation;
 
 
-@Path("tag")
+@Path("api/tag")
 @Produces({"application/json", "application/xml"})
 public class TagResource extends Resource<TagService, TagValidation, TagDto> {
 

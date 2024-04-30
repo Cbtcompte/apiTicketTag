@@ -7,7 +7,7 @@ import jpa.resources.abstracts.Resource;
 import jpa.services.TicketService;
 import jpa.validations.TicketValidation;
 
-@Path("ticket")
+@Path("api/ticket")
 @Produces({"application/json", "application/xml"})
 public class TicketResource extends Resource<TicketService, TicketValidation, TicketDto>{
 

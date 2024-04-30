@@ -8,7 +8,7 @@ import jpa.services.ProjetService;
 import jpa.validations.ProjetValidation;
 
 
-@Path("projet")
+@Path("/api/projet")
 @Produces({"application/json", "application/xml"})
 public class ProjetResource extends Resource<ProjetService, ProjetValidation, ProjetDto> {
     public ProjetResource() {

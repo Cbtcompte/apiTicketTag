@@ -1,7 +1,7 @@
 package jpa.builders;
-import jpa.models.Collaborateur;
 import jpa.models.Ticket;
 import jpa.models.associativeTables.Attribuer;
+import jpa.models.associativeTables.Collaborateur;
 
 public class AttribuerBuilder {
     private Collaborateur collaborateur;

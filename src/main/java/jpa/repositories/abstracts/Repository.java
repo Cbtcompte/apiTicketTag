@@ -10,8 +10,8 @@ import jpa.EntityManagerHelper;
 
 public abstract class Repository<T> {
 
-    EntityManager manager;
-    String tableName;
+    private EntityManager manager;
+    private String tableName;
 
     public Repository(String table){
         this.tableName = table;
@@ -212,14 +212,14 @@ public abstract class Repository<T> {
      * @see Exp For table "project" we use like tableAssociate "listes". It is the name of getter used when you declare your relation
      * @return List<T>
      */
-    public T selectWithJoinFetchAndWhereClause(String champ, String tableAssociate, Object value){
-        T result = null;
+    public List<T> selectWithJoinFetchAndWhereClause(String champ, String tableAssociate, Object value){
+        List<T> result = null;
         System.err.println("********* START ****************");
         try {
             getManager();
             Query query = this.manager.createQuery("select u from "+tableName+" u left join fetch u."+tableAssociate+" s where u."+champ+"= :value", tableName.getClass());
             query.setParameter("value", value);
-            result = (T) query.getResultList();
+            result = query.getResultList();
         } catch (Exception e) {
             System.err.println("=> "+e.getMessage());
         }
@@ -237,7 +237,7 @@ public abstract class Repository<T> {
         T result = null;
         try {
             getManager();
-            Query query = this.manager.createQuery("select u from "+tableName+" u where u.id = :idElement");
+            Query query = manager.createQuery("select u from "+tableName+" u where u.id = :idElement");
             query.setParameter("idElement", id);
             result = (T) query.getSingleResult();
         } catch (Exception e) {
@@ -265,13 +265,40 @@ public abstract class Repository<T> {
         System.err.println("********* END ****************");
     }
 
-    public void delete (Long id){
+
+    /**
+     * Permet de créer un objet de type T dans la base de donnée
+     * @param t
+     * @throws Exception 
+     */
+    public void update(T t) throws Exception {
+        getManager();
+        transactionRepository().begin();
+        System.err.println("********* START ****************");
         try {
-            Query query = this.manager.createQuery("delete from "+tableName+" u where u.id = :idElement");
-            query.setParameter("idElement", id);
+            manager.merge(t);
+            System.out.println("Update fait....");
+        } catch (Exception e) {
+           throw new Exception(e.getMessage());
+        }
+        transactionRepository().commit();
+        System.err.println("********* END ****************");
+    }
+
+    public void delete (Long id){
+        getManager();
+        transactionRepository().begin();
+        try {
+            System.err.println("********* START ****************");
+            T resulte = findById(id);
+            manager.remove(resulte);
+            System.out.println("Delete fait....");
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+        transactionRepository().commit();
+        System.err.println("********* END ****************");
+
     }
 
 }

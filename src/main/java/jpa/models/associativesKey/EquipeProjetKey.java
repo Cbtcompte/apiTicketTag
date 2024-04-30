@@ -4,14 +4,14 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class ProjetUserKey {
+public class EquipeProjetKey {
 
-    private Long utilisateurId;
+    private Long equipeId;
     private Long projetId;
 
-    @Column(name = "utilisateur_id", nullable = false)
+    @Column(name = "equipe_id", nullable = false)
     public Long getUtilisateurId() {
-        return utilisateurId;
+        return equipeId;
     }
 
     @Column(name = "projet_id", nullable = false)
@@ -19,8 +19,8 @@ public class ProjetUserKey {
         return projetId;
     }
 
-    public void setUtilisateurId(Long utilisateurId) {
-        this.utilisateurId = utilisateurId;
+    public void setEquipeId(Long equipeId) {
+        this.equipeId = equipeId;
     }
 
     public void setProjetId(Long projetId) {

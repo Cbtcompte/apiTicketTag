@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jpa.models.abstracts.GenerateCommonColumn;
+import jpa.models.associativeTables.Collaborateur;
 
 @Entity
 @Table(name="utilisateurs")
@@ -14,7 +15,7 @@ public class Utilisateur extends GenerateCommonColumn {
 
     private String name;
     private String email;
-    private List<Collaborateur> equipes;
+    private List<Collaborateur> equipeCollaborateurs;
     
     
     @Column(name = "name", nullable = false)
@@ -28,8 +29,8 @@ public class Utilisateur extends GenerateCommonColumn {
     }
     
     @OneToMany(mappedBy = "utilisateur")
-    public  List<Collaborateur> getEquipes() {
-        return this.equipes;
+    public  List<Collaborateur> getequipeCollaborateurs() {
+        return this.equipeCollaborateurs;
     }
 
     public void setName(String name) {
@@ -40,8 +41,8 @@ public class Utilisateur extends GenerateCommonColumn {
         this.email = email;
     }
 
-    public void setEquipes(List<Collaborateur> equipes) {
-        this.equipes = equipes;
+    public void setEquipeCollaborateurs(List<Collaborateur> equipeCollaborateurs) {
+        this.equipeCollaborateurs = equipeCollaborateurs;
     }
 
     @Override

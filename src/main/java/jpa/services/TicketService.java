@@ -6,7 +6,7 @@ import jpa.models.Liste;
 import jpa.models.Ticket;
 import jpa.repositories.ListeRepository;
 import jpa.repositories.TicketRepository;
-import jpa.services.abstracts.Service;
+import jpa.services.interfaces.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,13 +81,19 @@ public class TicketService implements Service<TicketDto>{
 
     }
 
-    public TicketDto getWithOthersRelations(String champ, String tableAssociate, Object value){
-        Ticket t = ticketRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
-        if(t != null){
-            return ticketDto.fromEntity(t);
-        }
+    // public TicketDto getWithOthersRelations(String champ, String tableAssociate, Object value){
+    //     Ticket t = ticketRepository.selectWithJoinFetchAndWhereClause(champ, tableAssociate, value);
+    //     if(t != null){
+    //         return ticketDto.fromEntity(t);
+    //     }
 
-        return ticketDto;
+    //     return ticketDto;
+    // }
+
+    @Override
+    public TicketDto update(TicketDto t, Long id) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
 }

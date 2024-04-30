@@ -9,12 +9,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
-import jpa.models.Collaborateur;
 import jpa.models.Ticket;
 import jpa.models.associativesKey.TicketCollaborateurKey;
 
 @Entity
-@Table(name = "assignees")
+@Table(name = "attribues")
 public class Attribuer {
     private TicketCollaborateurKey id;
     private Collaborateur collaborateur;

@@ -1,6 +1,7 @@
 package jpa.dtos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,11 +13,10 @@ public class ProjetDto implements Serializable{
     private Long id;
     private String theme;
     private String description;
+    private String status = "En cours";
     private Date startProjet;
     private Date endProjet;
-    private Date startReelProjet;
-    private Date endReelProjet;
-    private List<ListeDto> listeDtos;
+    private List<ListeDto> listeDtos = new ArrayList<>();
 
 
     public List<ListeDto> getListeDtos() {
@@ -26,6 +26,16 @@ public class ProjetDto implements Serializable{
     public void setListeDtos(List<ListeDto> listeDtos) {
         this.listeDtos = listeDtos;
     }
+
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
     public Long getId() {
         return this.id;
@@ -50,16 +60,6 @@ public class ProjetDto implements Serializable{
         return this.endProjet;
     }
 
-
-    public Date getStartReelProjet() {
-        return this.startReelProjet;
-    }
-
-
-    public Date getEndReelProjet() {
-        return this.endReelProjet;
-    }
-
     public void setTheme(String theme) {
         this.theme = theme;
     }
@@ -79,27 +79,29 @@ public class ProjetDto implements Serializable{
     public void setEndProjet(Date endProjet) {
         this.endProjet = endProjet;
     }
-
-    public void setStartReelProjet(Date startReelProjet) {
-        this.startReelProjet = startReelProjet;
-    }
-
-    public void setEndReelProjet(Date endReelProjet) {
-        this.endReelProjet = endReelProjet;
-    }
-
     
     public ProjetDto fromEntity(Projet projet){
         ProjetDto p = new ProjetBuilder()
                     .setId(projet.getId())
                     .setDescription(projet.getDescription())
                     .setEndProjet(projet.getEndProjet())
-                    .setEndReelProjet(projet.getEndReelProjet())
+                    .setStatus(projet.getStatus())
                     .setStartProjet(projet.getStartProjet())
-                    .setStartReelProjet(projet.getStartReelProjet())
                     .setTheme(projet.getTheme())
                     .setListes(projet.getListes())
                     .buildDto();
+        return p;
+    }
+
+    public ProjetDto fromEntityWithoutList(Projet projet){
+        ProjetDto p = new ProjetBuilder()
+                    .setId(projet.getId())
+                    .setDescription(projet.getDescription())
+                    .setEndProjet(projet.getEndProjet())
+                    .setStatus(projet.getStatus())
+                    .setStartProjet(projet.getStartProjet())
+                    .setTheme(projet.getTheme())
+                    .buildDtoWithoutList();
         return p;
     }
 
@@ -107,9 +109,8 @@ public class ProjetDto implements Serializable{
         Projet p = new ProjetBuilder()
                     .setDescription(this.description)
                     .setEndProjet(this.endProjet)
-                    .setEndReelProjet(this.endReelProjet)
+                    .setStatus(this.status)
                     .setStartProjet(this.startProjet)
-                    .setStartReelProjet(this.startReelProjet)
                     .setTheme(this.theme)
                     .build();
                                             

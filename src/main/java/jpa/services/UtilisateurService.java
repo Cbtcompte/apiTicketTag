@@ -3,11 +3,12 @@ package jpa.services;
 import jpa.dtos.UtilisateurDto;
 import jpa.models.Utilisateur;
 import jpa.repositories.UtilisateurRepository;
+import jpa.services.interfaces.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UtilisateurService {
+public class UtilisateurService implements Service<UtilisateurDto>{
     
     private UtilisateurRepository utilisateurRepository;
     private UtilisateurDto utilisateurDto;
@@ -22,10 +23,9 @@ public class UtilisateurService {
      *
      * @return List<UtilisateurDto>
      */
-    public List<UtilisateurDto> getAllUtilisateur(){
-        utilisateurRepository.getManager();
+    @Override
+    public List<UtilisateurDto> getAll(){
         List<Utilisateur> u = utilisateurRepository.selectAll();
-        utilisateurRepository.closeManager();
         List<UtilisateurDto> utilisateurDtos = new ArrayList<>();
         if(!u.isEmpty()){
             for (Utilisateur utilisateur : u) {
@@ -40,10 +40,9 @@ public class UtilisateurService {
      *
      * @return UtilisateurDto
      */
-    public UtilisateurDto getUtilisateur(Long id){
-        utilisateurRepository.getManager();
+    @Override
+    public UtilisateurDto get(Long id){
         Utilisateur u = utilisateurRepository.findById(id);
-        utilisateurRepository.closeManager();
         if(u != null){
             return utilisateurDto.fromEntity(u);
         }
@@ -56,9 +55,9 @@ public class UtilisateurService {
      * @param uD is UtilisateurDto
      * @return UtilisateurDto
      */
-    public UtilisateurDto addUtilisateur(UtilisateurDto uD){
+    @Override
+    public UtilisateurDto add(UtilisateurDto uD){
         Utilisateur u = uD.toEntity();
-        utilisateurRepository.getManager();
         try {
             utilisateurRepository.create(u);
         } catch (Exception e) {
@@ -73,10 +72,25 @@ public class UtilisateurService {
         return utilisateurDto;
     }
 
-    public void deleteUtilisateur(Long id){
-        utilisateurRepository.getManager();
+    @Override
+    public void delete(Long id){
         utilisateurRepository.delete(id);
+    }
 
+    @Override
+    public UtilisateurDto update(UtilisateurDto uD, Long id) throws Exception {
+        Utilisateur u = utilisateurRepository.findById(id);
+        u.setName(uD.getName());
+        u.setEmail(uD.getEmail());
+        try {
+            utilisateurRepository.update(u);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(u != null){
+            return utilisateurDto.fromEntity(u);
+        }
+        return utilisateurDto;
     }
 
 }

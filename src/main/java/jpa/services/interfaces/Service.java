@@ -1,4 +1,4 @@
-package jpa.services.abstracts;
+package jpa.services.interfaces;
 
 import java.util.List;
 
@@ -24,6 +24,9 @@ public interface Service<T> {
      * This method allow to add new row
      */
     public T add(T t) throws Exception;
+
+
+    public T update(T t, Long id) throws Exception;
 
     /*
      * This method allow to delete the row of id

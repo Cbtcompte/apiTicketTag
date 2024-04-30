@@ -4,7 +4,7 @@ import jpa.builders.UtilisateurBuilder;
 import jpa.models.Utilisateur;
 
 public class UtilisateurDto {
-
+    private Long id;
     private String name;
     private String email;
 
@@ -13,6 +13,13 @@ public class UtilisateurDto {
         return this.name;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getEmail() {
         return this.email;
@@ -30,6 +37,7 @@ public class UtilisateurDto {
 
     public  UtilisateurDto fromEntity(Utilisateur utilisateur){
         UtilisateurDto u = new UtilisateurBuilder()
+                .setId(utilisateur.getId())
                 .setEmail(utilisateur.getEmail())
                 .setName(utilisateur.getName())
                 .buildDto();
@@ -37,7 +45,7 @@ public class UtilisateurDto {
     }
     public Utilisateur toEntity(){
         Utilisateur u = new UtilisateurBuilder()
-                .setEmail(this.email)
+                .setName(this.name)
                 .setEmail(this.email)
                 .build();
         return u;

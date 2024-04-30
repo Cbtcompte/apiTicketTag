@@ -8,6 +8,4 @@ public class ListeRepository extends Repository<Liste> {
     public  ListeRepository (){
         super("Liste");
     }
-
-    
 }

@@ -1,14 +1,14 @@
 package jpa.builders;
 
 import jpa.dtos.CollaborateurDto;
-import jpa.models.Collaborateur;
-import jpa.models.Projet;
 import jpa.models.Utilisateur;
+import jpa.models.associativeTables.Collaborateur;
+import jpa.models.associativeTables.EquipeProjet;
 
 public class CollaborateurBuilder {
     private String name;
     private Utilisateur utilisateur;
-    private Projet projet;
+    private EquipeProjet equipeProjet;
 
     public CollaborateurBuilder setUtilisateur(Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
@@ -16,8 +16,8 @@ public class CollaborateurBuilder {
         return this;
     }
 
-    public CollaborateurBuilder setProjet(Projet projet) {
-        this.projet = projet;
+    public CollaborateurBuilder setProjet(EquipeProjet equipeProjet) {
+        this.equipeProjet = equipeProjet;
 
         return this;
     }
@@ -31,7 +31,7 @@ public class CollaborateurBuilder {
     public Collaborateur build(){
         Collaborateur collaborateur = new Collaborateur();
         collaborateur.setName(this.name);
-        collaborateur.setProjet(this.projet);
+        collaborateur.setEquipeProjet(this.equipeProjet);
         collaborateur.setUtilisateur(this.utilisateur);
         return collaborateur;
     }
@@ -39,7 +39,6 @@ public class CollaborateurBuilder {
     public CollaborateurDto builDto(){
         CollaborateurDto collaborateurDto = new CollaborateurDto();
         collaborateurDto.setName(this.name);
-        collaborateurDto.setProjet(this.projet);
         collaborateurDto.setUtilisateur(this.utilisateur);
         return collaborateurDto;
     }

@@ -7,8 +7,8 @@ public class TicketValidation extends Validation<TicketDto>{
     
     @Override
     public void rules(TicketDto t) {
-        if(t.getLibelle().isEmpty()){
-            this.getMessages().put("titre", "Le titre est obligatoire");
+        if( t.getLibelle() == null || t.getLibelle().isEmpty()){
+            this.getMessages().put("libelle", "Le libellé est obligatoire");
             this.setError(true);
         }
 

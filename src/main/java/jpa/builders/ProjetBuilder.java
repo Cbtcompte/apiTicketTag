@@ -13,6 +13,7 @@ public class ProjetBuilder {
     private Long id;
     private String theme;
     private String description;
+    private String status;
     private Date startProjet;
     private Date endProjet;
     private Date startReelProjet;
@@ -27,6 +28,12 @@ public class ProjetBuilder {
 
     public ProjetBuilder setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+
+    public ProjetBuilder setStatus(String status) {
+        this.status = status;
         return this;
     }
 
@@ -64,9 +71,8 @@ public class ProjetBuilder {
         Projet projets = new Projet();
         projets.setDescription(this.description);
         projets.setEndProjet(this.endProjet);
-        projets.setEndReelProjet(this.endReelProjet);
+        projets.setStatus(this.status);
         projets.setStartProjet(this.startProjet);
-        projets.setStartReelProjet(this.startReelProjet);
         projets.setTheme(this.theme);
 
         return projets;
@@ -83,14 +89,25 @@ public class ProjetBuilder {
             }
         }
         projetsDto.setId(this.id);
+        projetsDto.setStatus(this.status);
         projetsDto.setDescription(this.description);
         projetsDto.setEndProjet(this.endProjet);
-        projetsDto.setEndReelProjet(this.endReelProjet);
         projetsDto.setStartProjet(this.startProjet);
-        projetsDto.setStartReelProjet(this.startReelProjet);
         projetsDto.setTheme(this.theme);
         projetsDto.setListeDtos(listeDtos);
 
+        return projetsDto;
+    }
+
+
+    public ProjetDto buildDtoWithoutList(){
+        ProjetDto projetsDto = new ProjetDto();
+        projetsDto.setId(this.id);
+        projetsDto.setStatus(this.status);
+        projetsDto.setDescription(this.description);
+        projetsDto.setEndProjet(this.endProjet);
+        projetsDto.setStartProjet(this.startProjet);
+        projetsDto.setTheme(this.theme);
         return projetsDto;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 import jpa.dtos.ProjetDto;
 import jpa.models.Projet;
 import jpa.repositories.ProjetRepository;
-import jpa.services.abstracts.Service;
+import jpa.services.interfaces.Service;
 
 public class ProjetService implements Service<ProjetDto>{
 
@@ -25,11 +25,11 @@ public class ProjetService implements Service<ProjetDto>{
     */
     @Override
     public List<ProjetDto> getAll(){
-        List<Projet> p = projetRepository.selectWithLeftJoinFetch("listes");
+        List<Projet> p = projetRepository.selectAll();
         List<ProjetDto> projetDtos = new ArrayList<>();
         if(!p.isEmpty()){
             for (Projet projet : p) {
-               projetDtos.add(projetDto.fromEntity(projet));
+               projetDtos.add(projetDto.fromEntityWithoutList(projet));
             }
         }
         return projetDtos;
@@ -51,19 +51,19 @@ public class ProjetService implements Service<ProjetDto>{
     }
     
 
-    /**
-     * This method return one project from database. This project is identify by its id
-     *
-     * @return ProjetDto
-    */
-    public ProjetDto getWithOthersRelations(String champ, Object value){
-        Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, "listes", value);
-        if(p != null){
-            return projetDto.fromEntity(p);
-        }
+    // /**
+    //  * This method return one project from database. This project is identify by its id
+    //  *
+    //  * @return ProjetDto
+    // */
+    // public ProjetDto getWithOthersRelations(String champ, Object value){
+    //     Projet p = projetRepository.selectWithJoinFetchAndWhereClause(champ, "listes", value);
+    //     if(p != null){
+    //         return projetDto.fromEntity(p);
+    //     }
 
-        return projetDto;
-    }
+    //     return projetDto;
+    // }
 
 
     /**
@@ -89,5 +89,23 @@ public class ProjetService implements Service<ProjetDto>{
         projetRepository.getManager();
         projetRepository.delete(id);
 
+    }
+
+    @Override
+    public ProjetDto update(ProjetDto pD, Long id) throws Exception {
+        Projet t = projetRepository.findById(id);
+        t.setTheme(pD.getTheme());
+        t.setDescription(pD.getDescription());
+        t.setStartProjet(pD.getStartProjet());
+        t.setEndProjet(pD.getEndProjet());
+        try {
+            projetRepository.update(t);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(t != null){
+            return projetDto.fromEntity(t);
+        }
+        return projetDto;
     }
 }
